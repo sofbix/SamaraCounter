@@ -1,0 +1,708 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E30F304025928C49000DD810 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F303E25928C49000DD810 /* Service.swift */; };
+		E30F304125928C49000DD810 /* RKSSendDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F303F25928C49000DD810 /* RKSSendDataService.swift */; };
+		E334ED142593D85800A84F4B /* SamGESSendDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E334ED132593D85800A84F4B /* SamGESSendDataService.swift */; };
+		E363B8CB258FB77F000609D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E363B8CA258FB77F000609D5 /* AppDelegate.swift */; };
+		E363B8CF258FB77F000609D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E363B8CE258FB77F000609D5 /* ViewController.swift */; };
+		E363B8D2258FB77F000609D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E363B8D0258FB77F000609D5 /* Main.storyboard */; };
+		E363B8D4258FB782000609D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E363B8D3258FB782000609D5 /* Assets.xcassets */; };
+		E363B8D7258FB782000609D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E363B8D5258FB782000609D5 /* LaunchScreen.storyboard */; };
+		E363B8E2258FB783000609D5 /* SamaraCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E363B8E1258FB783000609D5 /* SamaraCounterTests.swift */; };
+		E363B8ED258FB783000609D5 /* SamaraCounterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E363B8EC258FB783000609D5 /* SamaraCounterUITests.swift */; };
+		E363B904258FBAAB000609D5 /* FlatEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E363B901258FBAAB000609D5 /* FlatEntity.swift */; };
+		E363B905258FBAAB000609D5 /* WaterCounterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E363B902258FBAAB000609D5 /* WaterCounterEntity.swift */; };
+		E363B906258FBAAB000609D5 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E363B903258FBAAB000609D5 /* DatabaseManager.swift */; };
+		E3C532EE2595285200F42646 /* EsPlusSendDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C532ED2595285200F42646 /* EsPlusSendDataService.swift */; };
+		EEDAF6CFA17547ABE0F6B920 /* Pods_SamaraCounter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCACC4A3402F656573D51B4 /* Pods_SamaraCounter.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E363B8DE258FB783000609D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E363B8BF258FB77F000609D5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E363B8C6258FB77F000609D5;
+			remoteInfo = SamaraCounter;
+		};
+		E363B8E9258FB783000609D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E363B8BF258FB77F000609D5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E363B8C6258FB77F000609D5;
+			remoteInfo = SamaraCounter;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7C204310CE3D7E02ECB875FC /* Pods-SamaraCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamaraCounter.release.xcconfig"; path = "Target Support Files/Pods-SamaraCounter/Pods-SamaraCounter.release.xcconfig"; sourceTree = "<group>"; };
+		7CCACC4A3402F656573D51B4 /* Pods_SamaraCounter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SamaraCounter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C161DC4DA1F8D915E1A44649 /* Pods-SamaraCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamaraCounter.debug.xcconfig"; path = "Target Support Files/Pods-SamaraCounter/Pods-SamaraCounter.debug.xcconfig"; sourceTree = "<group>"; };
+		E30F303E25928C49000DD810 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		E30F303F25928C49000DD810 /* RKSSendDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKSSendDataService.swift; sourceTree = "<group>"; };
+		E334ED132593D85800A84F4B /* SamGESSendDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamGESSendDataService.swift; sourceTree = "<group>"; };
+		E363B8C7258FB77F000609D5 /* SamaraCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SamaraCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E363B8CA258FB77F000609D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E363B8CE258FB77F000609D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E363B8D1258FB77F000609D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E363B8D3258FB782000609D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E363B8D6258FB782000609D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E363B8D8258FB782000609D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E363B8DD258FB783000609D5 /* SamaraCounterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SamaraCounterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E363B8E1258FB783000609D5 /* SamaraCounterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamaraCounterTests.swift; sourceTree = "<group>"; };
+		E363B8E3258FB783000609D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E363B8E8258FB783000609D5 /* SamaraCounterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SamaraCounterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E363B8EC258FB783000609D5 /* SamaraCounterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamaraCounterUITests.swift; sourceTree = "<group>"; };
+		E363B8EE258FB783000609D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E363B901258FBAAB000609D5 /* FlatEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatEntity.swift; sourceTree = "<group>"; };
+		E363B902258FBAAB000609D5 /* WaterCounterEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterCounterEntity.swift; sourceTree = "<group>"; };
+		E363B903258FBAAB000609D5 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		E3C532ED2595285200F42646 /* EsPlusSendDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EsPlusSendDataService.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E363B8C4258FB77F000609D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEDAF6CFA17547ABE0F6B920 /* Pods_SamaraCounter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E363B8DA258FB783000609D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E363B8E5258FB783000609D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		099B48BC7A89A24611CD22E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7CCACC4A3402F656573D51B4 /* Pods_SamaraCounter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		78E6826A62653EA70927B1A8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C161DC4DA1F8D915E1A44649 /* Pods-SamaraCounter.debug.xcconfig */,
+				7C204310CE3D7E02ECB875FC /* Pods-SamaraCounter.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E30F303D25928C49000DD810 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E30F303E25928C49000DD810 /* Service.swift */,
+				E30F303F25928C49000DD810 /* RKSSendDataService.swift */,
+				E334ED132593D85800A84F4B /* SamGESSendDataService.swift */,
+				E3C532ED2595285200F42646 /* EsPlusSendDataService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E363B8BE258FB77F000609D5 = {
+			isa = PBXGroup;
+			children = (
+				E363B8C9258FB77F000609D5 /* SamaraCounter */,
+				E363B8E0258FB783000609D5 /* SamaraCounterTests */,
+				E363B8EB258FB783000609D5 /* SamaraCounterUITests */,
+				E363B8C8258FB77F000609D5 /* Products */,
+				78E6826A62653EA70927B1A8 /* Pods */,
+				099B48BC7A89A24611CD22E3 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E363B8C8258FB77F000609D5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E363B8C7258FB77F000609D5 /* SamaraCounter.app */,
+				E363B8DD258FB783000609D5 /* SamaraCounterTests.xctest */,
+				E363B8E8258FB783000609D5 /* SamaraCounterUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E363B8C9258FB77F000609D5 /* SamaraCounter */ = {
+			isa = PBXGroup;
+			children = (
+				E363B900258FBAAB000609D5 /* DB */,
+				E30F303D25928C49000DD810 /* Network */,
+				E363B8CA258FB77F000609D5 /* AppDelegate.swift */,
+				E363B8CE258FB77F000609D5 /* ViewController.swift */,
+				E363B8D0258FB77F000609D5 /* Main.storyboard */,
+				E363B8D3258FB782000609D5 /* Assets.xcassets */,
+				E363B8D5258FB782000609D5 /* LaunchScreen.storyboard */,
+				E363B8D8258FB782000609D5 /* Info.plist */,
+			);
+			path = SamaraCounter;
+			sourceTree = "<group>";
+		};
+		E363B8E0258FB783000609D5 /* SamaraCounterTests */ = {
+			isa = PBXGroup;
+			children = (
+				E363B8E1258FB783000609D5 /* SamaraCounterTests.swift */,
+				E363B8E3258FB783000609D5 /* Info.plist */,
+			);
+			path = SamaraCounterTests;
+			sourceTree = "<group>";
+		};
+		E363B8EB258FB783000609D5 /* SamaraCounterUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E363B8EC258FB783000609D5 /* SamaraCounterUITests.swift */,
+				E363B8EE258FB783000609D5 /* Info.plist */,
+			);
+			path = SamaraCounterUITests;
+			sourceTree = "<group>";
+		};
+		E363B900258FBAAB000609D5 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				E363B901258FBAAB000609D5 /* FlatEntity.swift */,
+				E363B902258FBAAB000609D5 /* WaterCounterEntity.swift */,
+				E363B903258FBAAB000609D5 /* DatabaseManager.swift */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E363B8C6258FB77F000609D5 /* SamaraCounter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E363B8F1258FB783000609D5 /* Build configuration list for PBXNativeTarget "SamaraCounter" */;
+			buildPhases = (
+				90E5743AE3F00CDF942BF1F4 /* [CP] Check Pods Manifest.lock */,
+				E363B8C3258FB77F000609D5 /* Sources */,
+				E363B8C4258FB77F000609D5 /* Frameworks */,
+				E363B8C5258FB77F000609D5 /* Resources */,
+				5434AEF64F02758C4CEB34C8 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SamaraCounter;
+			productName = SamaraCounter;
+			productReference = E363B8C7258FB77F000609D5 /* SamaraCounter.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E363B8DC258FB783000609D5 /* SamaraCounterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E363B8F4258FB783000609D5 /* Build configuration list for PBXNativeTarget "SamaraCounterTests" */;
+			buildPhases = (
+				E363B8D9258FB783000609D5 /* Sources */,
+				E363B8DA258FB783000609D5 /* Frameworks */,
+				E363B8DB258FB783000609D5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E363B8DF258FB783000609D5 /* PBXTargetDependency */,
+			);
+			name = SamaraCounterTests;
+			productName = SamaraCounterTests;
+			productReference = E363B8DD258FB783000609D5 /* SamaraCounterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E363B8E7258FB783000609D5 /* SamaraCounterUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E363B8F7258FB783000609D5 /* Build configuration list for PBXNativeTarget "SamaraCounterUITests" */;
+			buildPhases = (
+				E363B8E4258FB783000609D5 /* Sources */,
+				E363B8E5258FB783000609D5 /* Frameworks */,
+				E363B8E6258FB783000609D5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E363B8EA258FB783000609D5 /* PBXTargetDependency */,
+			);
+			name = SamaraCounterUITests;
+			productName = SamaraCounterUITests;
+			productReference = E363B8E8258FB783000609D5 /* SamaraCounterUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E363B8BF258FB77F000609D5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1210;
+				LastUpgradeCheck = 1210;
+				TargetAttributes = {
+					E363B8C6258FB77F000609D5 = {
+						CreatedOnToolsVersion = 12.1;
+					};
+					E363B8DC258FB783000609D5 = {
+						CreatedOnToolsVersion = 12.1;
+						TestTargetID = E363B8C6258FB77F000609D5;
+					};
+					E363B8E7258FB783000609D5 = {
+						CreatedOnToolsVersion = 12.1;
+						TestTargetID = E363B8C6258FB77F000609D5;
+					};
+				};
+			};
+			buildConfigurationList = E363B8C2258FB77F000609D5 /* Build configuration list for PBXProject "SamaraCounter" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E363B8BE258FB77F000609D5;
+			productRefGroup = E363B8C8258FB77F000609D5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E363B8C6258FB77F000609D5 /* SamaraCounter */,
+				E363B8DC258FB783000609D5 /* SamaraCounterTests */,
+				E363B8E7258FB783000609D5 /* SamaraCounterUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E363B8C5258FB77F000609D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E363B8D7258FB782000609D5 /* LaunchScreen.storyboard in Resources */,
+				E363B8D4258FB782000609D5 /* Assets.xcassets in Resources */,
+				E363B8D2258FB77F000609D5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E363B8DB258FB783000609D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E363B8E6258FB783000609D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5434AEF64F02758C4CEB34C8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SamaraCounter/Pods-SamaraCounter-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SamaraCounter/Pods-SamaraCounter-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SamaraCounter/Pods-SamaraCounter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		90E5743AE3F00CDF942BF1F4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SamaraCounter-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E363B8C3258FB77F000609D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E363B904258FBAAB000609D5 /* FlatEntity.swift in Sources */,
+				E30F304125928C49000DD810 /* RKSSendDataService.swift in Sources */,
+				E363B8CF258FB77F000609D5 /* ViewController.swift in Sources */,
+				E334ED142593D85800A84F4B /* SamGESSendDataService.swift in Sources */,
+				E363B906258FBAAB000609D5 /* DatabaseManager.swift in Sources */,
+				E363B8CB258FB77F000609D5 /* AppDelegate.swift in Sources */,
+				E3C532EE2595285200F42646 /* EsPlusSendDataService.swift in Sources */,
+				E363B905258FBAAB000609D5 /* WaterCounterEntity.swift in Sources */,
+				E30F304025928C49000DD810 /* Service.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E363B8D9258FB783000609D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E363B8E2258FB783000609D5 /* SamaraCounterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E363B8E4258FB783000609D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E363B8ED258FB783000609D5 /* SamaraCounterUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E363B8DF258FB783000609D5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E363B8C6258FB77F000609D5 /* SamaraCounter */;
+			targetProxy = E363B8DE258FB783000609D5 /* PBXContainerItemProxy */;
+		};
+		E363B8EA258FB783000609D5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E363B8C6258FB77F000609D5 /* SamaraCounter */;
+			targetProxy = E363B8E9258FB783000609D5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E363B8D0258FB77F000609D5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E363B8D1258FB77F000609D5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E363B8D5258FB782000609D5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E363B8D6258FB782000609D5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E363B8EF258FB783000609D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E363B8F0258FB783000609D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E363B8F2258FB783000609D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C161DC4DA1F8D915E1A44649 /* Pods-SamaraCounter.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FDK83T8QNS;
+				INFOPLIST_FILE = SamaraCounter/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.byterix.SamaraCounter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E363B8F3258FB783000609D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C204310CE3D7E02ECB875FC /* Pods-SamaraCounter.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FDK83T8QNS;
+				INFOPLIST_FILE = SamaraCounter/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.byterix.SamaraCounter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E363B8F5258FB783000609D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FDK83T8QNS;
+				INFOPLIST_FILE = SamaraCounterTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Byterix.SamaraCounterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SamaraCounter.app/SamaraCounter";
+			};
+			name = Debug;
+		};
+		E363B8F6258FB783000609D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FDK83T8QNS;
+				INFOPLIST_FILE = SamaraCounterTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Byterix.SamaraCounterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SamaraCounter.app/SamaraCounter";
+			};
+			name = Release;
+		};
+		E363B8F8258FB783000609D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FDK83T8QNS;
+				INFOPLIST_FILE = SamaraCounterUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Byterix.SamaraCounterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SamaraCounter;
+			};
+			name = Debug;
+		};
+		E363B8F9258FB783000609D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FDK83T8QNS;
+				INFOPLIST_FILE = SamaraCounterUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Byterix.SamaraCounterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SamaraCounter;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E363B8C2258FB77F000609D5 /* Build configuration list for PBXProject "SamaraCounter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E363B8EF258FB783000609D5 /* Debug */,
+				E363B8F0258FB783000609D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E363B8F1258FB783000609D5 /* Build configuration list for PBXNativeTarget "SamaraCounter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E363B8F2258FB783000609D5 /* Debug */,
+				E363B8F3258FB783000609D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E363B8F4258FB783000609D5 /* Build configuration list for PBXNativeTarget "SamaraCounterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E363B8F5258FB783000609D5 /* Debug */,
+				E363B8F6258FB783000609D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E363B8F7258FB783000609D5 /* Build configuration list for PBXNativeTarget "SamaraCounterUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E363B8F8258FB783000609D5 /* Debug */,
+				E363B8F9258FB783000609D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E363B8BF258FB77F000609D5 /* Project object */;
+}
