@@ -22,19 +22,13 @@ struct SamGESSendDataService : ApiService {
         
         
         let headers = [
-            "Content-Type" : "application/x-www-form-urlencoded",
-            "Cookie" : "JSESSIONID=01DEA10C4D8CDA49E88B91F976E12A45; _ym_uid=1569932691204228573; _ym_d=1608748340; _ym_isad=1; _ym_visorc_51156908=w; _ym_visorc=w"
+            "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8",
         ]
-        // проблема в куках: их надо доставать и брать откуда то из логина, пока не понятно как! Но есть обходной путь:
-        // https://service.samges.ru/PrivatePublic/Indications.jsp
-        // или надо отправлять через email:
-        // pokaz@samges.ru
-        // \(input.electricAccountNumberRow.value ?? "") 010556148452054 \(input.dayElectricCountRow.value ?? "") \(input.nightElectricCountRow.value ?? "")
         
-        let body = "nls=\(input.electricAccountNumberRow.value ?? "")&show1=\(input.dayElectricCountRow.value ?? "")&show2=\(input.nightElectricCountRow.value ?? "")"
+        let body = "nls=\(input.electricAccountNumberRow.value ?? "")&devSnumber=\(input.electricCounterNumberRow.value ?? "")&devShow=&devShowD=\(input.dayElectricCountRow.value ?? "")&devShowN=\(input.nightElectricCountRow.value ?? "")&devShowP=&devShowPP=&devShowNN=&f=8"
         
 
-        var request = try! URLRequest(url: "https://service.samges.ru/Private/AbonServ?__nocache=0.7957026630146569&f=10", method: .post, headers: headers)
+        var request = try! URLRequest(url: "https://service.samges.ru/PrivatePublic/npubserv", method: .post, headers: headers)
         request.httpBody = body.data(using: .utf8)
         
         return service(request)
@@ -46,7 +40,7 @@ struct SamGESSendDataService : ApiService {
         if let stringData = String(data: data, encoding: .utf8)
             
         {
-            if stringData == "OK" {
+            if stringData == "OK:" {
                 return nil
             } else {
                 print(stringData)
