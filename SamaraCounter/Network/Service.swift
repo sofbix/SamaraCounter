@@ -24,7 +24,6 @@ struct ProgressService {
                 seal.fulfill(Data())
             }
         }
-        
     }
     
 }

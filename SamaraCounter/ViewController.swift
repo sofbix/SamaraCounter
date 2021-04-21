@@ -328,12 +328,14 @@ class ViewController: BxInputController {
     func startServices() {
 
         let services : [Promise<Data>] = [
-            //ProgressService().start(with: "Передача показаний в РКС"),
-            //RKSSendDataService().start(with: self),
-            //ProgressService().start(with: "Передача показаний в СамГЭС"),
-            //SamGESSendDataService().start(with: self),
-            ProgressService().start(with: "Передача показаний в T+"),
-            EsPlusSendDataService().start(with: self)
+            ProgressService().start(with: "Передача в РКС"),
+            RKSSendDataService().start(with: self),
+            
+            ProgressService().start(with: "Передача в T+"),
+            EsPlusSendDataService().start(with: self),
+            
+            ProgressService().start(with: "Передача в СамГЭС"),
+            SamGESSendDataService().start(with: self),
         ]
         when(fulfilled: services)
         .done {[weak self] datas in
