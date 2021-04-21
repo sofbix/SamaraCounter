@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C31FA4752630777800740E5C /* WaterCounterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31FA4742630777800740E5C /* WaterCounterViewModel.swift */; };
 		E30F304025928C49000DD810 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F303E25928C49000DD810 /* Service.swift */; };
 		E30F304125928C49000DD810 /* RKSSendDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F303F25928C49000DD810 /* RKSSendDataService.swift */; };
 		E334ED142593D85800A84F4B /* SamGESSendDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E334ED132593D85800A84F4B /* SamGESSendDataService.swift */; };
@@ -47,6 +48,7 @@
 		C161DC4DA1F8D915E1A44649 /* Pods-SamaraCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamaraCounter.debug.xcconfig"; path = "Target Support Files/Pods-SamaraCounter/Pods-SamaraCounter.debug.xcconfig"; sourceTree = "<group>"; };
 		C31FA4692630681100740E5C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		C31FA46D2630681100740E5C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		C31FA4742630777800740E5C /* WaterCounterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterCounterViewModel.swift; sourceTree = "<group>"; };
 		E30F303E25928C49000DD810 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		E30F303F25928C49000DD810 /* RKSSendDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKSSendDataService.swift; sourceTree = "<group>"; };
 		E334ED132593D85800A84F4B /* SamGESSendDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamGESSendDataService.swift; sourceTree = "<group>"; };
@@ -112,6 +114,22 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C31FA4722630773E00740E5C /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				C31FA4732630775700740E5C /* Counters */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		C31FA4732630775700740E5C /* Counters */ = {
+			isa = PBXGroup;
+			children = (
+				C31FA4742630777800740E5C /* WaterCounterViewModel.swift */,
+			);
+			path = Counters;
+			sourceTree = "<group>";
+		};
 		E30F303D25928C49000DD810 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +168,7 @@
 			children = (
 				E363B900258FBAAB000609D5 /* DB */,
 				E30F303D25928C49000DD810 /* Network */,
+				C31FA4722630773E00740E5C /* Features */,
 				E363B8CA258FB77F000609D5 /* AppDelegate.swift */,
 				E363B8CE258FB77F000609D5 /* ViewController.swift */,
 				E363B8D0258FB77F000609D5 /* Main.storyboard */,
@@ -364,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E363B904258FBAAB000609D5 /* FlatEntity.swift in Sources */,
+				C31FA4752630777800740E5C /* WaterCounterViewModel.swift in Sources */,
 				E30F304125928C49000DD810 /* RKSSendDataService.swift in Sources */,
 				E363B8CF258FB77F000609D5 /* ViewController.swift in Sources */,
 				E334ED142593D85800A84F4B /* SamGESSendDataService.swift in Sources */,
