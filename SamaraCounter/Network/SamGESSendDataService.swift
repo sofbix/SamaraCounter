@@ -18,7 +18,7 @@ struct SamGESSendDataService : ApiService {
     let title: String = "СамГЭС"
     
     
-    func map(_ input: ViewController) -> Promise<Data> {
+    func map(_ input: Input) -> Promise<Data> {
         
         
         let headers = [

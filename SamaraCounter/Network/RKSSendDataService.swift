@@ -19,7 +19,7 @@ struct RKSSendDataService : ApiService {
     let title: String = "РКС"
     
     
-    func map(_ input: ViewController) -> Promise<Data> {
+    func map(_ input: Input) -> Promise<Data> {
         
         
         let headers = [

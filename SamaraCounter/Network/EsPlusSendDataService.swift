@@ -18,7 +18,7 @@ struct EsPlusSendDataService : ApiService {
     let title: String = "T+"
     
     
-    func map(_ input: ViewController) -> Promise<Data> {
+    func map(_ input: Input) -> Promise<Data> {
         
         
         let headers = [
