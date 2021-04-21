@@ -12,7 +12,11 @@ protocol CheckProviderProtocol {
     
     var value: Bool {get}
     
+    var serviceName: String {get}
+    
     func update(services: inout [Promise<Data>], input: ViewController)
+    
+    func updateValue(_ entity: FlatEntity)
 }
 
 class CheckProviderRow<T: ApiService>: BxInputCheckRow
@@ -35,6 +39,20 @@ extension CheckProviderRow: CheckProviderProtocol where T.Input == ViewControlle
             services.append(ProgressService().start(with: "Передача в " + service.title))
             services.append(service.start(with: input))
         }
+    }
+    
+    var serviceName: String {
+        return service.name
+    }
+    
+    func updateValue(_ entity: FlatEntity) {
+        let serviceProvidersToSending = entity.serviceProvidersToSending
+        guard serviceProvidersToSending.isEmpty == false else {
+            value = true
+            return
+        }
+        let services = serviceProvidersToSending.split(separator: FlatEntity.serviceProvidersToSendingDevider)
+        value = services.contains(Substring(serviceName))
     }
     
 }

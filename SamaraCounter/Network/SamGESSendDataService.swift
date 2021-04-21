@@ -15,6 +15,7 @@ struct SamGESSendDataService : ApiService {
     typealias Input = ViewController
     
     
+    let name: String = "SamGES"
     let title: String = "СамГЭС"
     
     

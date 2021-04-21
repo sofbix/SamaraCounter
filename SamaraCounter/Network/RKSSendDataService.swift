@@ -15,7 +15,7 @@ struct RKSSendDataService : ApiService {
     
     typealias Input = ViewController
     
-    
+    let name: String = "RKS"
     let title: String = "РКС"
     
     

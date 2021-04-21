@@ -52,10 +52,6 @@ class ViewController: BxInputController {
         CheckProviderRow(SamGESSendDataService())
     ], footerText: "Выберите поставщиков комунальных услуг, для которых требуется отправлять показания приборов")
     
-    let servicesToSending = CheckProviderRow(RKSSendDataService())
-    let isSendingToEsPlusRow = CheckProviderRow(EsPlusSendDataService())
-    let isSendingToSamGESRow = CheckProviderRow(SamGESSendDataService())
-    
     let sendFooter: UIView = {
         let foother = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         foother.backgroundColor = .clear
@@ -83,7 +79,7 @@ class ViewController: BxInputController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        isEstimatedContent = false
+        isEstimatedContent = true
         
         homeNumberRow.textSettings.keyboardType = .numberPad
         flatNumberRow.textSettings.keyboardType = .numberPad
@@ -167,7 +163,11 @@ class ViewController: BxInputController {
             sections.append(waterCounter.section)
         }
         
-        
+        if let servicesRows = servicesSection.rows as? [CheckProviderProtocol] {
+            servicesRows.forEach{ row in
+                row.updateValue(flatEntity)
+            }
+        }
         sections.append(servicesSection)
 
         sections.append(BxInputSection(headerText: "Проверьте данные и нажмите:", rows: [], footerText: nil))
@@ -197,6 +197,16 @@ class ViewController: BxInputController {
             #warning("Please check dayElectricCountRow & nightElectricCountRow to Int values")
             flatEntity.dayElectricCount = dayElectricCountRow.value ?? ""
             flatEntity.nightElectricCount = nightElectricCountRow.value ?? ""
+            
+            if let servicesRows = servicesSection.rows as? [CheckProviderProtocol] {
+                flatEntity.serviceProvidersToSending = servicesRows.compactMap{ row -> String? in
+                    if row.value {
+                        return row.serviceName
+                    }
+                    return nil
+                }.joined(separator: String(FlatEntity.serviceProvidersToSendingDevider))
+            }
+            
             DatabaseManager.shared.commonRealm.add(flatEntity, update: .modified)
             do {
                 try DatabaseManager.shared.commonRealm.commitWrite()

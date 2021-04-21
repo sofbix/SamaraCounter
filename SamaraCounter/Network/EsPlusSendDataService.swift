@@ -15,6 +15,7 @@ struct EsPlusSendDataService : ApiService {
     typealias Input = ViewController
     
     
+    let name: String = "EsPlus"
     let title: String = "T+"
     
     

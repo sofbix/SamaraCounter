@@ -11,6 +11,8 @@ import RealmSwift
 
 class FlatEntity: Object {
     
+    static let serviceProvidersToSendingDevider : String.Element = ","
+    
     @objc dynamic var id: String = ""
     
     // for multyaccount mode in a future
@@ -35,7 +37,7 @@ class FlatEntity: Object {
     
     @objc dynamic var esPlusAccountNumber: String = ""
     
-    @objc dynamic var isSendingToRKS: Bool = true
+    @objc dynamic var serviceProvidersToSending: String = ""
     
     let waterCounters = List<WaterCounterEntity>()
     

@@ -30,6 +30,7 @@ struct ProgressService {
 
 protocol ApiService : Service {
     
+    var name: String {get}
     var title: String {get}
     
     associatedtype Input
