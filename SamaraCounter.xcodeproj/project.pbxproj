@@ -45,6 +45,8 @@
 		7C204310CE3D7E02ECB875FC /* Pods-SamaraCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamaraCounter.release.xcconfig"; path = "Target Support Files/Pods-SamaraCounter/Pods-SamaraCounter.release.xcconfig"; sourceTree = "<group>"; };
 		7CCACC4A3402F656573D51B4 /* Pods_SamaraCounter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SamaraCounter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C161DC4DA1F8D915E1A44649 /* Pods-SamaraCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamaraCounter.debug.xcconfig"; path = "Target Support Files/Pods-SamaraCounter/Pods-SamaraCounter.debug.xcconfig"; sourceTree = "<group>"; };
+		C31FA4692630681100740E5C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		C31FA46D2630681100740E5C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		E30F303E25928C49000DD810 /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		E30F303F25928C49000DD810 /* RKSSendDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKSSendDataService.swift; sourceTree = "<group>"; };
 		E334ED132593D85800A84F4B /* SamGESSendDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamGESSendDataService.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = E363B8BE258FB77F000609D5;
 			productRefGroup = E363B8C8258FB77F000609D5 /* Products */;
@@ -408,6 +411,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E363B8D1258FB77F000609D5 /* Base */,
+				C31FA4692630681100740E5C /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -416,6 +420,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				E363B8D6258FB782000609D5 /* Base */,
+				C31FA46D2630681100740E5C /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -427,6 +432,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -488,6 +494,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -548,6 +555,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FDK83T8QNS;
 				INFOPLIST_FILE = SamaraCounter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -568,6 +576,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FDK83T8QNS;
 				INFOPLIST_FILE = SamaraCounter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
