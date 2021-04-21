@@ -44,10 +44,17 @@ class ViewController: BxInputController {
     var dayElectricCountRow = BxInputTextRow(title: "День", subtitle: "целые числа, без дробных", maxCount: 10, value: "")
     var nightElectricCountRow = BxInputTextRow(title: "Ночь", subtitle: "целые числа, без дробных", maxCount: 10, value: "")
     
-    
-    let isSendingToRKSRow = BxInputCheckRow(title: "РКС", value: true)
-    
     var waterCounters: [WaterCounterViewModel] = []
+    
+    let servicesSection = BxInputSection(headerText: "Куда отправляем", rows: [
+        CheckProviderRow(RKSSendDataService()),
+        CheckProviderRow(EsPlusSendDataService()),
+        CheckProviderRow(SamGESSendDataService())
+    ], footerText: "Выберите поставщиков комунальных услуг, для которых требуется отправлять показания приборов")
+    
+    let servicesToSending = CheckProviderRow(RKSSendDataService())
+    let isSendingToEsPlusRow = CheckProviderRow(EsPlusSendDataService())
+    let isSendingToSamGESRow = CheckProviderRow(SamGESSendDataService())
     
     let sendFooter: UIView = {
         let foother = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
@@ -160,8 +167,8 @@ class ViewController: BxInputController {
             sections.append(waterCounter.section)
         }
         
-        // for a future
-        //sections.append(BxInputSection(headerText: "Куда отправляем", rows: [isSendingToUpravdomRow, isSendingToRKSRow], footerText: nil))
+        
+        sections.append(servicesSection)
 
         sections.append(BxInputSection(headerText: "Проверьте данные и нажмите:", rows: [], footerText: nil))
         sections.append(BxInputSection(header: BxInputSectionView(sendFooter), rows: []))
@@ -258,16 +265,14 @@ class ViewController: BxInputController {
     
     func startServices() {
 
-        let services : [Promise<Data>] = [
-            ProgressService().start(with: "Передача в РКС"),
-            RKSSendDataService().start(with: self),
-            
-            ProgressService().start(with: "Передача в T+"),
-            EsPlusSendDataService().start(with: self),
-            
-            ProgressService().start(with: "Передача в СамГЭС"),
-            SamGESSendDataService().start(with: self),
-        ]
+        var services : [Promise<Data>] = []
+        guard let servicesRows = servicesSection.rows as? [CheckProviderProtocol] else {
+            assertionFailure("Not corrected services")
+            return
+        }
+        servicesRows.forEach{ row in
+            row.update(services: &services, input: self)
+        }
         when(fulfilled: services)
         .done {[weak self] datas in
             CircularSpinner.hide()
