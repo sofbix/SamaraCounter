@@ -39,6 +39,8 @@ class FlatEntity: Object {
     
     @objc dynamic var serviceProvidersToSending: String = ""
     
+    @objc dynamic var sentDate: Date = Date()
+    
     let waterCounters = List<WaterCounterEntity>()
     
     override class func primaryKey() -> String? {
@@ -46,7 +48,7 @@ class FlatEntity: Object {
     }
     
     override class func indexedProperties() -> [String] {
-        return ["order"]
+        return ["order", "sentDate"]
     }
     
 }

@@ -184,6 +184,9 @@ class ViewController: BxInputController {
         if let flatEntity = DatabaseManager.shared.commonRealm.object(ofType: FlatEntity.self, forPrimaryKey: id)
         {
             DatabaseManager.shared.commonRealm.beginWrite()
+            
+            flatEntity.sentDate = Date()
+            
             flatEntity.surname = surnameRow.value ?? ""
             flatEntity.name = nameRow.value ?? ""
             flatEntity.patronymic = patronymicRow.value ?? ""
