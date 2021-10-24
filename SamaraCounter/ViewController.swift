@@ -106,7 +106,7 @@ class ViewController: BxInputController {
         
         var flatEntity = FlatEntity()
         
-        if let entity = DatabaseManager.shared.commonRealm.objects(FlatEntity.self).first {
+        if let entity = DatabaseManager.shared.commonRealm.objects(FlatEntity.self).filter("sentDate == nil").first {
             flatEntity = entity
         } else {
             DatabaseManager.shared.commonRealm.beginWrite()
@@ -180,12 +180,39 @@ class ViewController: BxInputController {
         }
     }
     
+    func branchAllFlatData(){
+        if let flatEntity = DatabaseManager.shared.commonRealm.object(ofType: FlatEntity.self, forPrimaryKey: id)
+        {
+            DatabaseManager.shared.commonRealm.beginWrite()
+            let flatEntity = FlatEntity(value: flatEntity)
+            flatEntity.id = UUID().uuidString
+            flatEntity.sentDate = Date()
+            let waterCounters: [WaterCounterEntity] = flatEntity.waterCounters.map{ counter in
+                let counter = WaterCounterEntity(value: counter)
+                counter.id = UUID().uuidString
+                DatabaseManager.shared.commonRealm.add(counter, update: .error)
+                return counter
+            }
+            flatEntity.waterCounters.removeAll()
+            flatEntity.waterCounters.append(objectsIn: waterCounters)
+            DatabaseManager.shared.commonRealm.add(flatEntity, update: .error)
+            do {
+                try DatabaseManager.shared.commonRealm.commitWrite()
+            } catch let error {
+                DatabaseManager.shared.commonRealm.cancelWrite()
+                showAlert(title: "Ошибка данных", message: "Данные в телефоне сохранены не будут: \(error)")
+            }
+        } else {
+            showAlert(title: "Ошибка данных", message: "Данные в телефоне сохранены не будут")
+        }
+    }
+    
     func saveFlatData(){
         if let flatEntity = DatabaseManager.shared.commonRealm.object(ofType: FlatEntity.self, forPrimaryKey: id)
         {
             DatabaseManager.shared.commonRealm.beginWrite()
             
-            flatEntity.sentDate = Date()
+            flatEntity.sentDate = nil
             
             flatEntity.surname = surnameRow.value ?? ""
             flatEntity.name = nameRow.value ?? ""
@@ -225,6 +252,10 @@ class ViewController: BxInputController {
     }
     
     func saveData(waterCounter: WaterCounterViewModel){
+        guard let flatEntity = DatabaseManager.shared.commonRealm.object(ofType: FlatEntity.self, forPrimaryKey: id) else
+        {
+            return
+        }
         if let _ = DatabaseManager.shared.commonRealm.object(ofType: WaterCounterEntity.self, forPrimaryKey: waterCounter.id)
         {
             DatabaseManager.shared.commonRealm.beginWrite()
@@ -240,13 +271,11 @@ class ViewController: BxInputController {
             DatabaseManager.shared.commonRealm.beginWrite()
             let waterCounterEntity = waterCounter.entity
             waterCounterEntity.id = UUID().uuidString
-            let waterCounterOrder : Int = DatabaseManager.shared.commonRealm.objects(WaterCounterEntity.self).sorted(byKeyPath: "order").last?.order ?? 0
+            
+            let waterCounterOrder : Int = flatEntity.waterCounters.max(of: \.order) ?? 0
             waterCounterEntity.order = waterCounterOrder + 1
             DatabaseManager.shared.commonRealm.add(waterCounterEntity, update: .all)
-            if let flatEntity = DatabaseManager.shared.commonRealm.object(ofType: FlatEntity.self, forPrimaryKey: id)
-            {
-                flatEntity.waterCounters.append(waterCounterEntity)
-            }
+            flatEntity.waterCounters.append(waterCounterEntity)
             do {
                 try DatabaseManager.shared.commonRealm.commitWrite()
                 updateData()
@@ -290,6 +319,7 @@ class ViewController: BxInputController {
         }
         when(fulfilled: services)
         .done {[weak self] datas in
+            self?.branchAllFlatData()
             CircularSpinner.hide()
             self?.showAlert(title: "Bingo!", message: "Ваши показания успешно отправлены")
         }.catch {[weak self] error in

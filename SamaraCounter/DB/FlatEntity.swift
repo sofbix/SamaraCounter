@@ -39,7 +39,7 @@ class FlatEntity: Object {
     
     @objc dynamic var serviceProvidersToSending: String = ""
     
-    @objc dynamic var sentDate: Date = Date()
+    @objc dynamic var sentDate: Date?
     
     let waterCounters = List<WaterCounterEntity>()
     
