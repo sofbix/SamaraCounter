@@ -172,5 +172,14 @@ Content-Disposition: form-data; name="SendDataWithoutRegForm[GVS_N05]"
         return "Ошибка отправки для РКС. Нет данных."
     }
     
+    func firstlyCheckAvailable() -> String? {
+        let calendar = Calendar.current
+        let day = calendar.component(.day, from: Date())
+        if day < 7 || day > 23 {
+            return "Принимает с 7 по 23 число"
+        }
+        return nil
+    }
+    
     
 }

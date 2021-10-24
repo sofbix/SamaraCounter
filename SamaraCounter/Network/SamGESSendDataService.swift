@@ -52,5 +52,14 @@ struct SamGESSendDataService : ApiService {
         return "Ошибка отправки для СамГЭС. Нет данных."
     }
     
+    func firstlyCheckAvailable() -> String? {
+        let calendar = Calendar.current
+        let day = calendar.component(.day, from: Date())
+        if day < 15 || day > 25 {
+            return "Принимает с 15 по 25 число"
+        }
+        return nil
+    }
+    
     
 }

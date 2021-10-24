@@ -40,18 +40,24 @@ protocol ApiService : Service {
     func checkInputData(_ data: Input) -> String?
     func checkOutputData(with data: Data) -> String?
     
+    func firstlyCheckAvailable() -> String?
 }
 
 
 extension ApiService {
     
-    // default realization have not input error
+    // default realization has not input error
     func checkInputData(_ data: Input) -> String? {
         return nil
     }
     
-    // default realization have not output error
+    // default realization has not output error
     func checkOutputData(with data: Data) -> String? {
+        return nil
+    }
+    
+    // default realization has not output error
+    func firstlyCheckAvailable() -> String? {
         return nil
     }
     

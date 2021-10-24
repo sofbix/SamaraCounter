@@ -8,7 +8,7 @@
 import BxInputController
 import PromiseKit
 
-protocol CheckProviderProtocol {
+protocol CheckProviderProtocol : BxInputRow {
     
     var value: Bool {get}
     
@@ -17,6 +17,8 @@ protocol CheckProviderProtocol {
     func update(services: inout [Promise<Data>], input: ViewController)
     
     func updateValue(_ entity: FlatEntity)
+    
+    func createChecker() -> BxInputRowChecker
 }
 
 class CheckProviderRow<T: ApiService>: BxInputCheckRow
@@ -27,6 +29,27 @@ class CheckProviderRow<T: ApiService>: BxInputCheckRow
     required init(_ service: T){
         self.service = service
         super.init(title: service.title, subtitle: nil, placeholder: nil, value: true)
+    }
+    
+    func createChecker() -> BxInputRowChecker {
+        let checker = BxInputBlockChecker(row: self)
+        checker.handler =
+        {[weak checker, weak self] (row: CheckProviderRow) -> Bool in
+            guard let this = self, let checker = checker else {
+                return false
+            }
+            guard this.value else {
+                return true
+            }
+            if let errorMessage = this.service.firstlyCheckAvailable() {
+                let decorator = BxInputStandartErrorRowDecorator()
+                decorator.subtitle = errorMessage
+                checker.decorator = decorator
+                return false
+            }
+            return true
+        }
+        return checker
     }
     
 }

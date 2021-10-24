@@ -46,11 +46,11 @@ class ViewController: BxInputController {
     
     var waterCounters: [WaterCounterViewModel] = []
     
-    let servicesSection = BxInputSection(headerText: "Куда отправляем", rows: [
+    let servicesRows : [CheckProviderProtocol] = [
         CheckProviderRow(RKSSendDataService()),
         CheckProviderRow(EsPlusSendDataService()),
         CheckProviderRow(SamGESSendDataService())
-    ], footerText: "Выберите поставщиков комунальных услуг, для которых требуется отправлять показания приборов")
+    ]
     
     let sendFooter: UIView = {
         let foother = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
@@ -163,17 +163,21 @@ class ViewController: BxInputController {
             sections.append(waterCounter.section)
         }
         
-        if let servicesRows = servicesSection.rows as? [CheckProviderProtocol] {
-            servicesRows.forEach{ row in
-                row.updateValue(flatEntity)
-            }
+        servicesRows.forEach{ row in
+            row.updateValue(flatEntity)
         }
+        let servicesSection = BxInputSection(headerText: "Куда отправляем", rows: servicesRows, footerText: "Выберите поставщиков комунальных услуг, для которых требуется отправлять показания приборов")
         sections.append(servicesSection)
+        
+        
 
         sections.append(BxInputSection(headerText: "Проверьте данные и нажмите:", rows: [], footerText: nil))
         sections.append(BxInputSection(header: BxInputSectionView(sendFooter), rows: []))
         
         self.sections = sections
+        for row in servicesRows {
+            addChecker(row.createChecker(), for: row)
+        }
     }
     
     func saveFlatData(){
@@ -198,14 +202,12 @@ class ViewController: BxInputController {
             flatEntity.dayElectricCount = dayElectricCountRow.value ?? ""
             flatEntity.nightElectricCount = nightElectricCountRow.value ?? ""
             
-            if let servicesRows = servicesSection.rows as? [CheckProviderProtocol] {
-                flatEntity.serviceProvidersToSending = servicesRows.compactMap{ row -> String? in
-                    if row.value {
-                        return row.serviceName
-                    }
-                    return nil
-                }.joined(separator: String(FlatEntity.serviceProvidersToSendingDevider))
-            }
+            flatEntity.serviceProvidersToSending = servicesRows.compactMap{ row -> String? in
+                if row.value {
+                    return row.serviceName
+                }
+                return nil
+            }.joined(separator: String(FlatEntity.serviceProvidersToSendingDevider))
             
             DatabaseManager.shared.commonRealm.add(flatEntity, update: .modified)
             do {
@@ -270,16 +272,16 @@ class ViewController: BxInputController {
     
     @objc
     func start() {
+        guard checkAllRows() else {
+            showAlert(title: "Ошибка", message: "Проверьте данные...")
+            return
+        }
         startServices()
     }
     
     func startServices() {
 
         var services : [Promise<Data>] = []
-        guard let servicesRows = servicesSection.rows as? [CheckProviderProtocol] else {
-            assertionFailure("Not corrected services")
-            return
-        }
         servicesRows.forEach{ row in
             row.update(services: &services, input: self)
         }
