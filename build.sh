@@ -159,7 +159,7 @@ if [ "$SETUP_VERSION" == "auto" ]; then
     git fetch --tags --force
         
     # get templated version number as max from git tags:
-    VERSION_TAG=$(git describe --tags $(git rev-list --tags=${BUILD_VERSION_TAG_GROUP_NAME}/* --max-count=1000) | awk "/$BUILD_VERSION_TAG_GROUP_NAME\/[0-9.]+$"'/{print $0}' | sed -n "s/$BUILD_VERSION_TAG_GROUP_NAME\/\(\S*\)/\1/p" | awk '{if(min==""){min=$1}; if(max==""){max=$1}; if($1>max) {max=$1}; if($1<min) {min=$1}; total+=$1; count+=1} END {print max}')
+    VERSION_TAG=$(git describe --tags $(git rev-list --tags=${BUILD_VERSION_TAG_GROUP_NAME}/* --max-count=1000) | awk "/$BUILD_VERSION_TAG_GROUP_NAME\/[0-9.]+$"'/{print $0}' | sed -n "s/$BUILD_VERSION_TAG_GROUP_NAME\/\(\S*\)/\1/p" | awk '{if(min==""){min=$1}; if(max==""){max=$1}; if($1>max) {max=$1}; if($1<min) {min=$1}; total+=$1; count+=1} END {print min}')
     echo "Last tag version is $VERSION_TAG\n"
 
     if [[ $VERSION_TAG =~ ^[0-9]+$ ]]
