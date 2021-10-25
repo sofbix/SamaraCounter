@@ -156,11 +156,11 @@ fi
 
 if [ "$SETUP_VERSION" == "auto" ]; then
     echo "Pulling all tags from remote"
-    #git pull --tags
+    git pull --tags --always
     git fetch --tags
         
     # get templated version number as max from git tags:
-    VERSION_TAG=$(git describe --tags $(git rev-list --tags=${BUILD_VERSION_TAG_GROUP_NAME}/* --max-count=1000) | awk "/$BUILD_VERSION_TAG_GROUP_NAME\/[0-9.]+$"'/{print $0}' | sed -n "s/$BUILD_VERSION_TAG_GROUP_NAME\/\(\S*\)/\1/p" | awk '{if(min==""){min=max=$1}; if($1>max) {max=$1}; if($1<min) {min=$1}; total+=$1; count+=1} END {print max}')
+    VERSION_TAG=$(git describe --tags $(git rev-list --tags=${BUILD_VERSION_TAG_GROUP_NAME}/* --max-count=1000) | awk "/$BUILD_VERSION_TAG_GROUP_NAME\/[0-9.]+$"'/{print $0}' | sed -n "s/$BUILD_VERSION_TAG_GROUP_NAME\/\(\S*\)/\1/p" | awk '{if(min==""){min=max=$1}; if($1>max) {max=$1}; if($1<min) {min=$1}; total+=$1; count+=1} END {print max}' --always)
     echo "Last tag version is $VERSION_TAG\n"
 
     if [[ $VERSION_TAG =~ ^[0-9]+$ ]]
@@ -300,7 +300,7 @@ createExportPlist(){
     <key>signingStyle</key>
     <string>automatic</string>
     <key>signingCertificate</key>
-    <string>iOS Distribution</string>
+    <string>Apple Distribution</string>
     <key>method</key>
     <string>${SIGNING_METHOD}</string>
     <key>teamID</key>
