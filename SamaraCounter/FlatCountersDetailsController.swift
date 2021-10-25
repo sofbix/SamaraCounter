@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  FlatCountersDetailsController.swift
 //  SamaraCounter
 //
 //  Created by Sergey Balalaev on 20.12.2020.
@@ -14,7 +14,7 @@ import Alamofire
 import Fuzi
 import PromiseKit
 
-class ViewController: BxInputController {
+class FlatCountersDetailsController: BxInputController {
     
     let waterCounterMaxCount = 3
     

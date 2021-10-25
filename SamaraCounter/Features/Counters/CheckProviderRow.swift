@@ -14,7 +14,7 @@ protocol CheckProviderProtocol : BxInputRow {
     
     var serviceName: String {get}
     
-    func update(services: inout [Promise<Data>], input: ViewController)
+    func update(services: inout [Promise<Data>], input: FlatCountersDetailsController)
     
     func updateValue(_ entity: FlatEntity)
     
@@ -54,10 +54,10 @@ class CheckProviderRow<T: SendDataService>: BxInputCheckRow
     
 }
 
-extension CheckProviderRow: CheckProviderProtocol where T.Input == ViewController
+extension CheckProviderRow: CheckProviderProtocol where T.Input == FlatCountersDetailsController
 {
     
-    func update(services: inout [Promise<Data>], input: ViewController) {
+    func update(services: inout [Promise<Data>], input: FlatCountersDetailsController) {
         if value {
             services.append(ProgressService().start(with: "Передача в " + service.title))
             services.append(service.start(with: input))

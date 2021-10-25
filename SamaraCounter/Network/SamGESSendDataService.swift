@@ -12,7 +12,7 @@ import Alamofire
 struct SamGESSendDataService : SendDataService {
     
     
-    typealias Input = ViewController
+    typealias Input = FlatCountersDetailsController
     
     
     let name: String = "SamGES"

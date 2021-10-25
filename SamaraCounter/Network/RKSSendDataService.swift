@@ -13,7 +13,7 @@ import Alamofire
 struct RKSSendDataService : SendDataService {
     
     
-    typealias Input = ViewController
+    typealias Input = FlatCountersDetailsController
     
     let name: String = "RKS"
     let title: String = "РКС"
