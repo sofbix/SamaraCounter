@@ -9,7 +9,7 @@ import Foundation
 import PromiseKit
 import Alamofire
 
-struct EsPlusSendDataService : ApiService {
+struct EsPlusSendDataService : SendDataService {
     
     
     typealias Input = ViewController

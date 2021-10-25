@@ -10,7 +10,7 @@ import Foundation
 import PromiseKit
 import Alamofire
 
-struct RKSSendDataService : ApiService {
+struct RKSSendDataService : SendDataService {
     
     
     typealias Input = ViewController

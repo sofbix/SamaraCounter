@@ -21,7 +21,7 @@ protocol CheckProviderProtocol : BxInputRow {
     func createChecker() -> BxInputRowChecker
 }
 
-class CheckProviderRow<T: ApiService>: BxInputCheckRow
+class CheckProviderRow<T: SendDataService>: BxInputCheckRow
 {
 
     let service: T

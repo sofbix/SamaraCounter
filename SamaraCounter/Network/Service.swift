@@ -28,7 +28,7 @@ struct ProgressService {
     
 }
 
-protocol ApiService : Service {
+protocol SendDataService : Service {
     
     var name: String {get}
     var title: String {get}
@@ -44,7 +44,7 @@ protocol ApiService : Service {
 }
 
 
-extension ApiService {
+extension SendDataService {
     
     // default realization has not input error
     func checkInputData(_ data: Input) -> String? {
