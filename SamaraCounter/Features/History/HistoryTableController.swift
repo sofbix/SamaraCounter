@@ -54,6 +54,10 @@ class HistoryTableController: UITableViewController
         self.performSegue(withIdentifier: detailsSegue, sender: entity)
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return entities.count > 0 ? "История успешно отправленных показаний" : "Список отправленных показаний пуст"
+    }
+    
     @objc func new() {
         self.performSegue(withIdentifier: newSegue, sender: nil)
     }
