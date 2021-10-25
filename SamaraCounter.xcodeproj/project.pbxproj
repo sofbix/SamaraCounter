@@ -129,6 +129,7 @@
 			children = (
 				C31FA4742630777800740E5C /* WaterCounterViewModel.swift */,
 				C31FA47C26307C6C00740E5C /* CheckProviderRow.swift */,
+				E363B8CE258FB77F000609D5 /* FlatCountersDetailsController.swift */,
 			);
 			path = Counters;
 			sourceTree = "<group>";
@@ -173,7 +174,6 @@
 				E30F303D25928C49000DD810 /* Network */,
 				C31FA4722630773E00740E5C /* Features */,
 				E363B8CA258FB77F000609D5 /* AppDelegate.swift */,
-				E363B8CE258FB77F000609D5 /* FlatCountersDetailsController.swift */,
 				E363B8D0258FB77F000609D5 /* Main.storyboard */,
 				E363B8D3258FB782000609D5 /* Assets.xcassets */,
 				E363B8D5258FB782000609D5 /* LaunchScreen.storyboard */,
