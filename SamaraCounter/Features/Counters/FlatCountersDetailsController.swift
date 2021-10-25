@@ -18,33 +18,40 @@ class FlatCountersDetailsController: BxInputController {
     
     let waterCounterMaxCount = 3
     
-    // Go button
-    
-    let startRow = BxInputIconActionRow<String>(icon: nil, title: "Start")
-    
     // Input Fields:
     
     var id: String = ""
     var order: Int = 0
     
-    var surnameRow = BxInputTextRow(title: "Фамилия", maxCount: 200, value: "")
-    var nameRow = BxInputTextRow(title: "Имя", maxCount: 200, value: "")
-    var patronymicRow = BxInputTextRow(title: "Отчества", maxCount: 200, value: "")
-    var streetRow = BxInputTextRow(title: "Улица", subtitle: "например: ул. Больничная или пр. Кирова", maxCount: 200, value: "")
-    var homeNumberRow = BxInputTextRow(title: "Номер дома", maxCount: 5, value: "")
-    var flatNumberRow = BxInputTextRow(title: "Номер квартиры", maxCount: 5, value: "")
-    var phoneNumberRow = BxInputFormattedTextRow(title: "Телефон", prefix: "+7", format: "(###)###-##-##")
-    var emailRow = BxInputTextRow(title: "E-mail", maxCount: 50, value: "")
-    var rksAccountNumberRow = BxInputTextRow(title: "Номер счета РКС", subtitle: "если необходим", maxCount: 20, value: "")
-    var esPlusAccountNumberRow = BxInputTextRow(title: "Лицевой счёт Т+", subtitle: "если необходим", maxCount: 20, value: "")
-    var commentsRow = BxInputTextMemoRow(title: "Коментарии", maxCount: 1000, value: "")
-
-    var electricAccountNumberRow = BxInputTextRow(title: "Лицевой счет", subtitle: "как правило 8 цифр", maxCount: 20, value: "")
-    var electricCounterNumberRow = BxInputTextRow(title: "Номер счётчика", maxCount: 20, value: "")
-    var dayElectricCountRow = BxInputTextRow(title: "День", subtitle: "целые числа, без дробных", maxCount: 10, value: "")
-    var nightElectricCountRow = BxInputTextRow(title: "Ночь", subtitle: "целые числа, без дробных", maxCount: 10, value: "")
+    override var isEditing: Bool {
+        didSet {
+            guard isViewLoaded else {
+                return
+            }
+            updateData()
+        }
+    }
     
-    var waterCounters: [WaterCounterViewModel] = []
+    var newBranchHandler: (()-> Void)? = nil
+    
+    let surnameRow = BxInputTextRow(title: "Фамилия", maxCount: 200, value: "")
+    let nameRow = BxInputTextRow(title: "Имя", maxCount: 200, value: "")
+    let patronymicRow = BxInputTextRow(title: "Отчества", maxCount: 200, value: "")
+    let streetRow = BxInputTextRow(title: "Улица", subtitle: "например: ул. Больничная или пр. Кирова", maxCount: 200, value: "")
+    let homeNumberRow = BxInputTextRow(title: "Номер дома", maxCount: 5, value: "")
+    let flatNumberRow = BxInputTextRow(title: "Номер квартиры", maxCount: 5, value: "")
+    let phoneNumberRow = BxInputFormattedTextRow(title: "Телефон", prefix: "+7", format: "(###)###-##-##")
+    let emailRow = BxInputTextRow(title: "E-mail", maxCount: 50, value: "")
+    let rksAccountNumberRow = BxInputTextRow(title: "Номер счета РКС", subtitle: "если необходим", maxCount: 20, value: "")
+    let esPlusAccountNumberRow = BxInputTextRow(title: "Лицевой счёт Т+", subtitle: "если необходим", maxCount: 20, value: "")
+    let commentsRow = BxInputTextMemoRow(title: "Коментарии", maxCount: 1000, value: "")
+
+    let electricAccountNumberRow = BxInputTextRow(title: "Лицевой счет", subtitle: "как правило 8 цифр", maxCount: 20, value: "")
+    let electricCounterNumberRow = BxInputTextRow(title: "Номер счётчика", maxCount: 20, value: "")
+    let dayElectricCountRow = BxInputTextRow(title: "День", subtitle: "целые числа, без дробных", maxCount: 10, value: "")
+    let nightElectricCountRow = BxInputTextRow(title: "Ночь", subtitle: "целые числа, без дробных", maxCount: 10, value: "")
+    
+    private(set) var waterCounters: [WaterCounterViewModel] = []
     
     let servicesRows : [CheckProviderProtocol] = [
         CheckProviderRow(RKSSendDataService()),
@@ -71,11 +78,6 @@ class FlatCountersDetailsController: BxInputController {
         
         updateData()
         
-        startRow.isImmediatelyDeselect = true
-        startRow.handler = {[weak self] _ in
-            self?.start()
-        }
-        
         URLSessionConfiguration.default.timeoutIntervalForRequest = 60
         
     }
@@ -84,12 +86,19 @@ class FlatCountersDetailsController: BxInputController {
         
         var flatEntity = FlatEntity()
         
-        if let entity = DatabaseManager.shared.commonRealm.objects(FlatEntity.self).filter("sentDate == nil").first {
+        if id.isEmpty == false, let entity = DatabaseManager.shared.commonRealm.object(ofType: FlatEntity.self, forPrimaryKey: id)
+        {
+            flatEntity = entity
+        } else if let entity = DatabaseManager.shared.commonRealm.objects(FlatEntity.self).filter("sentDate == nil").first {
             flatEntity = entity
         } else {
             DatabaseManager.shared.commonRealm.beginWrite()
             flatEntity.id = UUID().uuidString
-            flatEntity.order = 1
+            flatEntity.order = 1 // for a future multi flat
+            // New counters sending to all Services:
+            flatEntity.serviceProvidersToSending = servicesRows.map{ row -> String in
+                return row.serviceName
+            }.joined(separator: String(FlatEntity.serviceProvidersToSendingDevider))
             DatabaseManager.shared.commonRealm.add(flatEntity, update: .all)
             do {
                 try DatabaseManager.shared.commonRealm.commitWrite()
@@ -134,7 +143,8 @@ class FlatCountersDetailsController: BxInputController {
             sections.append(waterCounter.section)
         }
         
-        if waterCounters.count < waterCounterMaxCount {
+        // New Water Counter
+        if waterCounters.count < waterCounterMaxCount && isEditing {
             let waterCounter = WaterCounterViewModel()
             
             waterCounters.append(waterCounter)
@@ -148,14 +158,16 @@ class FlatCountersDetailsController: BxInputController {
         sections.append(servicesSection)
         
         
-
-        sections.append(BxInputSection(headerText: "Проверьте данные и нажмите:", rows: [], footerText: nil))
-        sections.append(BxInputSection(header: BxInputSectionView(sendFooter), rows: []))
+        if isEditing {
+            sections.append(BxInputSection(headerText: "Проверьте данные и нажмите:", rows: [], footerText: nil))
+            sections.append(BxInputSection(header: BxInputSectionView(sendFooter), rows: []))
+        }
         
         self.sections = sections
         for row in servicesRows {
             addChecker(row.createChecker(), for: row)
         }
+        setEnabled(isEditing, with: .none)
     }
     
     func branchAllFlatData(){
@@ -180,6 +192,7 @@ class FlatCountersDetailsController: BxInputController {
                 DatabaseManager.shared.commonRealm.cancelWrite()
                 showAlert(title: "Ошибка данных", message: "Данные в телефоне сохранены не будут: \(error)")
             }
+            newBranchHandler?()
         } else {
             showAlert(title: "Ошибка данных", message: "Данные в телефоне сохранены не будут")
         }

@@ -71,7 +71,7 @@ extension CheckProviderRow: CheckProviderProtocol where T.Input == FlatCountersD
     func updateValue(_ entity: FlatEntity) {
         let serviceProvidersToSending = entity.serviceProvidersToSending
         guard serviceProvidersToSending.isEmpty == false else {
-            value = true
+            value = false
             return
         }
         let services = serviceProvidersToSending.split(separator: FlatEntity.serviceProvidersToSendingDevider)
