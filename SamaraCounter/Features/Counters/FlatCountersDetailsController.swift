@@ -308,20 +308,26 @@ class FlatCountersDetailsController: BxInputController {
         servicesRows.forEach{ row in
             row.update(services: &services, input: self)
         }
+        guard services.count > 0 else {
+            showAlert(title: "Ошибка", message: "Выберите хотябы одного провайдера в 'Куда отправляем'")
+            return
+        }
         when(fulfilled: services)
         .done {[weak self] datas in
             self?.branchAllFlatData()
             CircularSpinner.hide()
-            self?.showAlert(title: "Bingo!", message: "Ваши показания успешно отправлены")
+            self?.showAlert(title: "Bingo!", message: "Ваши показания успешно отправлены"){
+                self?.navigationController?.popViewController(animated: true)
+            }
         }.catch {[weak self] error in
             CircularSpinner.hide()
             self?.showAlert(title: "Ошибка", message: error.localizedDescription)
         }
     }
     
-    func showAlert(title: String, message: String){
+    func showAlert(title: String, message: String, handler : (() -> Void)? = nil){
         let okAction = UIAlertAction(title: "OK", style: .default) {[weak self] _ in
-            self?.dismiss(animated: true, completion: nil)
+            self?.dismiss(animated: true, completion: handler)
         }
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
