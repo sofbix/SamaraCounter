@@ -1,5 +1,5 @@
 //
-//  Service.swift
+//  SendDataService.swift
 //  Izumrud
 //
 //  Created by Sergey Balalaev on 22.12.2020.
@@ -10,10 +10,6 @@ import Foundation
 import PromiseKit
 import Alamofire
 import CircularSpinner
-
-protocol Service {
-    
-}
 
 struct ProgressService {
 
@@ -28,7 +24,7 @@ struct ProgressService {
     
 }
 
-protocol SendDataService : Service {
+protocol SendDataService {
     
     var name: String {get}
     var title: String {get}
