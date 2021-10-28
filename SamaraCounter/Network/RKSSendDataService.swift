@@ -64,7 +64,7 @@ Content-Disposition: form-data; name="SendDataWithoutRegForm[email]"
 -----------------------------207598656814045288261793191761
 Content-Disposition: form-data; name="SendDataWithoutRegForm[address]"
 
-5 ПРОСЕКА, дом № \(input.homeNumberRow.value ?? ""), кв.№\(input.flatNumberRow.value ?? "")
+\(input.streetRow.value ?? ""), дом № \(input.homeNumberRow.value ?? ""), кв.№\(input.flatNumberRow.value ?? "")
 -----------------------------207598656814045288261793191761
 Content-Disposition: form-data; name="SendDataWithoutRegForm[XVS_P01]"
 
