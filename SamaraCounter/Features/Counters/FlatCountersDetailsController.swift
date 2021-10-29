@@ -42,7 +42,7 @@ class FlatCountersDetailsController: BxInputController {
     let flatNumberRow = BxInputTextRow(title: "Номер квартиры", maxCount: 5, value: "")
     let phoneNumberRow = BxInputFormattedTextRow(title: "Телефон", prefix: "+7", format: "(###)###-##-##")
     let emailRow = BxInputTextRow(title: "E-mail", maxCount: 50, value: "")
-    let rksAccountNumberRow = BxInputTextRow(title: "Номер счета РКС", subtitle: "если необходим", maxCount: 20, value: "")
+    let rksAccountNumberRow = BxInputTextRow(title: "Номер счета РКС", subtitle: "если необходим", maxCount: 15, value: "")
     let esPlusAccountNumberRow = BxInputTextRow(title: "Лицевой счёт Т+", subtitle: "если необходим", maxCount: 20, value: "")
     let commentsRow = BxInputTextMemoRow(title: "Коментарии", maxCount: 1000, value: "")
 
