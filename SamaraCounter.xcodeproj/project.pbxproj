@@ -12,6 +12,7 @@
 		C3B94D6227269D1B00B5CEAC /* HistoryTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B94D6127269D1B00B5CEAC /* HistoryTableController.swift */; };
 		C3B94D6527269D9F00B5CEAC /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B94D6427269D9F00B5CEAC /* UIButton.swift */; };
 		C3B94D672726A38300B5CEAC /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B94D662726A38200B5CEAC /* DateFormatter.swift */; };
+		C3B94D69272C65F800B5CEAC /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B94D68272C65F800B5CEAC /* String.swift */; };
 		E30F304025928C49000DD810 /* SendDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F303E25928C49000DD810 /* SendDataService.swift */; };
 		E30F304125928C49000DD810 /* RKSSendDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F303F25928C49000DD810 /* RKSSendDataService.swift */; };
 		E334ED142593D85800A84F4B /* SamGESSendDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E334ED132593D85800A84F4B /* SamGESSendDataService.swift */; };
@@ -57,6 +58,7 @@
 		C3B94D6127269D1B00B5CEAC /* HistoryTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableController.swift; sourceTree = "<group>"; };
 		C3B94D6427269D9F00B5CEAC /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		C3B94D662726A38200B5CEAC /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		C3B94D68272C65F800B5CEAC /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		E30F303E25928C49000DD810 /* SendDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendDataService.swift; sourceTree = "<group>"; };
 		E30F303F25928C49000DD810 /* RKSSendDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKSSendDataService.swift; sourceTree = "<group>"; };
 		E334ED132593D85800A84F4B /* SamGESSendDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamGESSendDataService.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			children = (
 				C3B94D6427269D9F00B5CEAC /* UIButton.swift */,
 				C3B94D662726A38200B5CEAC /* DateFormatter.swift */,
+				C3B94D68272C65F800B5CEAC /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				E363B8CB258FB77F000609D5 /* AppDelegate.swift in Sources */,
 				C3B94D672726A38300B5CEAC /* DateFormatter.swift in Sources */,
 				E3C532EE2595285200F42646 /* EsPlusSendDataService.swift in Sources */,
+				C3B94D69272C65F800B5CEAC /* String.swift in Sources */,
 				E363B905258FBAAB000609D5 /* WaterCounterEntity.swift in Sources */,
 				E30F304025928C49000DD810 /* SendDataService.swift in Sources */,
 			);

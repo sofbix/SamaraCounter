@@ -8,6 +8,7 @@
 import Foundation
 import PromiseKit
 import Alamofire
+import BxInputController
 
 struct SamGESSendDataService : SendDataService {
     
@@ -18,6 +19,40 @@ struct SamGESSendDataService : SendDataService {
     let name: String = "SamGES"
     let title: String = "СамГЭС"
     
+    func addCheckers(for input: Input){
+        let electricAccountNumberChecker = BxInputBlockChecker(row: input.electricAccountNumberRow, subtitle: "Введите непустой номер из чисел", handler: { row in
+            let value = input.electricAccountNumberRow.value ?? ""
+            
+            guard value.count > 0 else {
+                return false
+            }
+            return value.isNumber
+        })
+        input.addChecker(electricAccountNumberChecker, for: input.electricAccountNumberRow)
+        
+        input.addChecker(BxInputEmptyValueChecker(row: input.electricCounterNumberRow, placeholder: "Значение должно быть не пустым"), for: input.electricCounterNumberRow)
+        
+        let dayElectricCountChecker = BxInputBlockChecker(row: input.dayElectricCountRow, subtitle: "Укажите целочисленное значение счетчика", handler: { row in
+            let value = input.dayElectricCountRow.value ?? ""
+            
+            guard value.count > 0 else {
+                return false
+            }
+            return value.isNumber
+        })
+        input.addChecker(dayElectricCountChecker, for: input.dayElectricCountRow)
+        
+        let nightElectricCountChecker = BxInputBlockChecker(row: input.nightElectricCountRow, subtitle: "Оставте пустым или целочисленное значение", handler: { row in
+            let value = input.nightElectricCountRow.value ?? ""
+            
+            if value.count == 0 {
+                return true
+            }
+            return value.isNumber
+        })
+        input.addChecker(nightElectricCountChecker, for: input.nightElectricCountRow)
+    }
+    
     
     func map(_ input: Input) -> Promise<Data> {
         
@@ -26,8 +61,13 @@ struct SamGESSendDataService : SendDataService {
             "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8",
         ]
         
-        let body = "nls=\(input.electricAccountNumberRow.value ?? "")&devSnumber=\(input.electricCounterNumberRow.value ?? "")&devShow=&devShowD=\(input.dayElectricCountRow.value ?? "")&devShowN=\(input.nightElectricCountRow.value ?? "")&devShowP=&devShowPP=&devShowNN=&f=8"
+        let dayValue = input.dayElectricCountRow.value ?? ""
+        let nightValue = input.nightElectricCountRow.value ?? ""
+        let requestString = nightValue.isEmpty
+            ? "devShow=\(dayValue)&devShowD=&devShowN="
+            : "devShow=&devShowD=\(dayValue)&devShowN=\(nightValue)"
         
+        let body = "nls=\(input.electricAccountNumberRow.value ?? "")&devSnumber=\(input.electricCounterNumberRow.value ?? "")&\(requestString)&devShowP=&devShowPP=&devShowNN=&f=8"
 
         var request = try! URLRequest(url: "https://service.samges.ru/PrivatePublic/npubserv", method: .post, headers: headers)
         request.httpBody = body.data(using: .utf8)

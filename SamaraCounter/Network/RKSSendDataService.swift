@@ -26,9 +26,7 @@ struct RKSSendDataService : SendDataService {
             guard value.count == 15 else {
                 return false
             }
-            let numberRegEx = "^[0-9]+$"
-            let numberTest = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
-            return numberTest.evaluate(with: value)
+            return value.isNumber
         })
         input.addChecker(rksAccountNumberChecker, for: input.rksAccountNumberRow)
     }

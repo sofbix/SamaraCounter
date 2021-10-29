@@ -49,7 +49,7 @@ class FlatCountersDetailsController: BxInputController {
     let electricAccountNumberRow = BxInputTextRow(title: "Лицевой счет", subtitle: "как правило 8 цифр", maxCount: 20, value: "")
     let electricCounterNumberRow = BxInputTextRow(title: "Номер счётчика", maxCount: 20, value: "")
     let dayElectricCountRow = BxInputTextRow(title: "День", subtitle: "целые числа, без дробных", maxCount: 10, value: "")
-    let nightElectricCountRow = BxInputTextRow(title: "Ночь", subtitle: "целые числа, без дробных", maxCount: 10, value: "")
+    let nightElectricCountRow = BxInputTextRow(title: "Ночь", subtitle: "для однофазного счетчика оставте пустым", maxCount: 10, value: "")
     
     private(set) var waterCounters: [WaterCounterViewModel] = []
     
