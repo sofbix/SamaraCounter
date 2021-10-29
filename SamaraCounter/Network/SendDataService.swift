@@ -10,6 +10,7 @@ import Foundation
 import PromiseKit
 import Alamofire
 import CircularSpinner
+import BxInputController
 
 struct ProgressService {
 
@@ -33,7 +34,8 @@ protocol SendDataService {
 
     func map(_ input: Input) -> Promise<Data>
     
-    func checkInputData(_ data: Input) -> String?
+    func addCheckers(for input: Input)
+    
     func checkOutputData(with data: Data) -> String?
     
     func firstlyCheckAvailable() -> String?
@@ -43,8 +45,8 @@ protocol SendDataService {
 extension SendDataService {
     
     // default realization has not input error
-    func checkInputData(_ data: Input) -> String? {
-        return nil
+    func addCheckers(for input: Input) {
+        //
     }
     
     // default realization has not output error
@@ -58,12 +60,6 @@ extension SendDataService {
     }
     
     func start(with input: Input) -> Promise<Data> {
-        if var errorMessage = self.checkInputData(input) {
-            if errorMessage.isEmpty {
-                errorMessage = "Ошибка входных данных"
-            }
-            return error(with: errorMessage)
-        }
         return map(input)
     }
     

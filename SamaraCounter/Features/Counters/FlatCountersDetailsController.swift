@@ -164,10 +164,14 @@ class FlatCountersDetailsController: BxInputController {
         }
         
         self.sections = sections
-        for row in servicesRows {
-            addChecker(row.createChecker(), for: row)
-        }
+        updateCheckers()
         setEnabled(isEditing, with: .none)
+    }
+    
+    func updateCheckers(){
+        for row in servicesRows {
+            row.addCheckers(for: self)
+        }
     }
     
     func branchAllFlatData(){
@@ -247,13 +251,30 @@ class FlatCountersDetailsController: BxInputController {
         {
             return
         }
-        if let _ = DatabaseManager.shared.commonRealm.object(ofType: WaterCounterEntity.self, forPrimaryKey: waterCounter.id)
+        if let waterCounterEntity = DatabaseManager.shared.commonRealm.object(ofType: WaterCounterEntity.self, forPrimaryKey: waterCounter.id)
         {
             DatabaseManager.shared.commonRealm.beginWrite()
-            let waterCounterEntity = waterCounter.entity
-            DatabaseManager.shared.commonRealm.add(waterCounterEntity, update: .modified)
+            var isRemove = false
+            if waterCounter.isValid {
+                let waterCounterEntity = waterCounter.entity
+                DatabaseManager.shared.commonRealm.add(waterCounterEntity, update: .modified)
+            } else {
+                if let index = flatEntity.waterCounters.index(of: waterCounterEntity){
+                    flatEntity.waterCounters.remove(at: index)
+                    isRemove = true
+                }
+                var index = 1
+                flatEntity.waterCounters.forEach { entity in
+                    flatEntity.order = index
+                    index += 1
+                }
+                DatabaseManager.shared.commonRealm.delete(waterCounterEntity)
+            }
             do {
                 try DatabaseManager.shared.commonRealm.commitWrite()
+                if isRemove {
+                    updateData()
+                }
             } catch let error {
                 DatabaseManager.shared.commonRealm.cancelWrite()
                 showAlert(title: "Ошибка данных", message: "Данные в телефоне сохранены не будут: \(error)")

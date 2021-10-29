@@ -18,7 +18,7 @@ protocol CheckProviderProtocol : BxInputRow {
     
     func updateValue(_ entity: FlatEntity)
     
-    func createChecker() -> BxInputRowChecker
+    func addCheckers(for input: FlatCountersDetailsController)
 }
 
 class CheckProviderRow<T: SendDataService>: BxInputCheckRow
@@ -31,7 +31,7 @@ class CheckProviderRow<T: SendDataService>: BxInputCheckRow
         super.init(title: service.title, subtitle: nil, placeholder: nil, value: true)
     }
     
-    func createChecker() -> BxInputRowChecker {
+    fileprivate func createSelfChecker() -> BxInputRowChecker {
         let checker = BxInputBlockChecker(row: self)
         checker.handler =
         {[weak checker, weak self] (row: CheckProviderRow) -> Bool in
@@ -56,6 +56,12 @@ class CheckProviderRow<T: SendDataService>: BxInputCheckRow
 
 extension CheckProviderRow: CheckProviderProtocol where T.Input == FlatCountersDetailsController
 {
+    
+    func addCheckers(for input: FlatCountersDetailsController)
+    {
+        input.addChecker(createSelfChecker(), for: self)
+        service.addCheckers(for: input)
+    }
     
     func update(services: inout [Promise<Data>], input: FlatCountersDetailsController) {
         if value {

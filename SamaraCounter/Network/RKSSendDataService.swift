@@ -9,6 +9,7 @@
 import Foundation
 import PromiseKit
 import Alamofire
+import BxInputController
 
 struct RKSSendDataService : SendDataService {
     
@@ -17,6 +18,26 @@ struct RKSSendDataService : SendDataService {
     
     let name: String = "RKS"
     let title: String = "РКС"
+    
+    func addCheckers(for input: Input){
+        let rksAccountNumberChecker = BxInputBlockChecker(row: input.rksAccountNumberRow, subtitle: "Введите 15 значный номер с нулями в начале", handler: { row in
+            let value = input.rksAccountNumberRow.value ?? ""
+            
+            guard value.count == 15 else {
+                return false
+            }
+            let numberRegEx = ".*[^0-9].*"
+            let numberTest = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
+            return numberTest.evaluate(with: value)
+        })
+        input.addChecker(rksAccountNumberChecker, for: input.rksAccountNumberRow)
+    }
+    
+    func createChecker(for input: Input) -> [BxInputRowChecker] {
+        return [
+            
+        ]
+    }
     
     
     func map(_ input: Input) -> Promise<Data> {
@@ -32,15 +53,16 @@ struct RKSSendDataService : SendDataService {
         
         var coldCounters = ["", "", "", "", ""]
         var hotCounters = coldCounters
-        
+        var index = 0
         for waterCounter in input.waterCounters {
-            if waterCounter.isValid { #warning("Has problem with checking realy params. Order can be invalided.")
-                let index = waterCounter.order - 1
+            if waterCounter.isValid
+            {
                 guard index >= 0 || index < coldCounters.count else {
                     continue
                 }
                 coldCounters[index] = "\(waterCounter.coldCountRow.value ?? "")"
                 hotCounters[index] = "\(waterCounter.hotCountRow.value ?? "")"
+                index += 1
             }
         }
         
