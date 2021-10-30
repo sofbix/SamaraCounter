@@ -48,11 +48,8 @@ class WaterCounterViewModel {
         result.order = order
         result.name = nameRow.value ?? ""
 
-        #warning("need throw exception if isn't Int value")
         result.hotCount = hotCountRow.value ?? ""
         result.hotSerialNumber = hotSerialNumberRow.value ?? ""
-        
-        #warning("need throw exception if isn't Int value")
         result.coldCount = coldCountRow.value ?? ""
         result.coldSerialNumber = coldSerialNumberRow.value ?? ""
         

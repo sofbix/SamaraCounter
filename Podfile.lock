@@ -7,13 +7,13 @@ PODS:
     - BxObjC/Control/ShakeAnimation
     - BxObjC/Control/TextView
     - BxTextField
-  - BxObjC/Common (1.7.0)
-  - BxObjC/Control/Navigation (1.7.0):
+  - BxObjC/Common (1.9.0)
+  - BxObjC/Control/Navigation (1.9.0):
     - BxObjC/Common
     - BxObjC/Control/ShakeAnimation
-  - BxObjC/Control/Rate (1.7.0)
-  - BxObjC/Control/ShakeAnimation (1.7.0)
-  - BxObjC/Control/TextView (1.7.0)
+  - BxObjC/Control/Rate (1.9.0)
+  - BxObjC/Control/ShakeAnimation (1.9.0)
+  - BxObjC/Control/TextView (1.9.0)
   - BxTextField (1.11)
   - CircularSpinner (1.4.1)
   - CodableAlamofire (1.1.2):
@@ -79,7 +79,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   BxInputController: 218d9c6b42c984083d17ad99b2c6808d0bb874a8
-  BxObjC: bfbb9716513900c893899e63833d5e469ca48a3e
+  BxObjC: a9195881db5cc80afff633d400f3d16a56a749c9
   BxTextField: baba0ef872edf277d5e240bbbf66b8e428a17acc
   CircularSpinner: da2c837faf57f4dc0631311a0a82dc81a3c107cf
   CodableAlamofire: b7adfb2e5e980392014b4b3f3b8b62c01b9de4aa
@@ -92,6 +92,6 @@ SPEC CHECKSUMS:
   RSLoadingView: c7749afdd455229643e8f34277d0695973a15b1a
   XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
 
-PODFILE CHECKSUM: 7c57d9a1891b701ec85f175090fe5537e2d03a29
+PODFILE CHECKSUM: dd8a533ec5b12281ab210ae6b6ed113246555ef3
 
 COCOAPODS: 1.11.2

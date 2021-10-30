@@ -223,7 +223,6 @@ class FlatCountersDetailsController: BxInputController {
             
             flatEntity.electricAccountNumber = electricAccountNumberRow.value ?? ""
             flatEntity.electricCounterNumber = electricCounterNumberRow.value ?? ""
-            #warning("Please check dayElectricCountRow & nightElectricCountRow to Int values")
             flatEntity.dayElectricCount = dayElectricCountRow.value ?? ""
             flatEntity.nightElectricCount = nightElectricCountRow.value ?? ""
             

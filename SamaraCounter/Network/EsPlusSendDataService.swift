@@ -18,6 +18,10 @@ struct EsPlusSendDataService : SendDataService {
     let name: String = "EsPlus"
     let title: String = "T+"
     
+    func addCheckers(for input: FlatCountersDetailsController) {
+        #warning("need check Int value of counters value")
+    }
+    
     
     func map(_ input: Input) -> Promise<Data> {
         
