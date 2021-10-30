@@ -55,7 +55,7 @@ class HistoryTableController: UITableViewController
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return entities.count > 0 ? "История успешно отправленных показаний" : "Список отправленных показаний пуст"
+        return entities.count > 0 ? "Отправленные показания" : "Список отправленных показаний пуст"
     }
     
     @objc func new() {
