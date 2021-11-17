@@ -31,6 +31,8 @@ protocol SendDataService {
     var name: String {get}
     var title: String {get}
     
+    var days: Range<Int> {get}
+    
     associatedtype Input
 
     func map(_ input: Input) -> Promise<Data>
@@ -55,8 +57,13 @@ extension SendDataService {
         return nil
     }
     
-    // default realization has not output error
+    // default realization has error for dayes range
     func firstlyCheckAvailable() -> String? {
+        let calendar = Calendar.current
+        let day = calendar.component(.day, from: Date())
+        if day < days.lowerBound || day > days.upperBound {
+            return "Принимает с \(days.lowerBound) по \(days.upperBound) число"
+        }
         return nil
     }
     

@@ -16,8 +16,10 @@ struct RKSSendDataService : SendDataService {
     
     typealias Input = FlatCountersDetailsController
     
+    
     let name: String = "RKS"
     let title: String = "РКС"
+    let days = Range<Int>(uncheckedBounds: (lower: 7, upper: 23))
     
     func addCheckers(for input: Input){
         let rksAccountNumberChecker = BxInputBlockChecker(row: input.rksAccountNumberRow, subtitle: "Введите 15 значный номер с нулями в начале", handler: { row in
@@ -180,15 +182,6 @@ Content-Disposition: form-data; name="SendDataWithoutRegForm[GVS_N05]"
         }
         
         return "Ошибка отправки для РКС. Нет данных."
-    }
-    
-    func firstlyCheckAvailable() -> String? {
-        let calendar = Calendar.current
-        let day = calendar.component(.day, from: Date())
-        if day < 7 || day > 23 {
-            return "Принимает с 7 по 23 число"
-        }
-        return nil
     }
     
     

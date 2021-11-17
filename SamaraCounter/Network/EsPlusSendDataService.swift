@@ -17,6 +17,7 @@ struct EsPlusSendDataService : SendDataService {
     
     let name: String = "EsPlus"
     let title: String = "T+"
+    let days = Range<Int>(uncheckedBounds: (lower: 15, upper: 25))
     
     func addCheckers(for input: FlatCountersDetailsController) {
         #warning("need check Int value of counters value")
@@ -60,15 +61,5 @@ struct EsPlusSendDataService : SendDataService {
             return error.localizedDescription
         }
     }
-    
-    func firstlyCheckAvailable() -> String? {
-        let calendar = Calendar.current
-        let day = calendar.component(.day, from: Date())
-        if day < 15 || day > 25 {
-            return "Принимает с 15 по 25 число"
-        }
-        return nil
-    }
-    
     
 }

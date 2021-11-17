@@ -18,6 +18,7 @@ struct SamGESSendDataService : SendDataService {
     
     let name: String = "SamGES"
     let title: String = "СамГЭС"
+    let days = Range<Int>(uncheckedBounds: (lower: 15, upper: 25))
     
     func addCheckers(for input: Input){
         let electricAccountNumberChecker = BxInputBlockChecker(row: input.electricAccountNumberRow, subtitle: "Введите непустой номер из чисел", handler: { row in
@@ -91,15 +92,5 @@ struct SamGESSendDataService : SendDataService {
         
         return "Ошибка отправки для СамГЭС. Нет данных."
     }
-    
-    func firstlyCheckAvailable() -> String? {
-        let calendar = Calendar.current
-        let day = calendar.component(.day, from: Date())
-        if day < 15 || day > 25 {
-            return "Принимает с 15 по 25 число"
-        }
-        return nil
-    }
-    
     
 }
