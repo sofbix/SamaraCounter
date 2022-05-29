@@ -1,10 +1,10 @@
 
 #
 #  build.sh
-#  version 2.1.2
+#  version 2.3.1
 #
 #  Created by Sergey Balalaev on 20.08.15.
-#  Copyright (c) 2015-2021 ByteriX. All rights reserved.
+#  Copyright (c) 2015-2022 ByteriX. All rights reserved.
 #
 
 PROJECT_NAME=""
@@ -14,14 +14,23 @@ SETUP_VERSION=auto
 IS_PODS_INIT=false
 IS_TAG_VERSION=false
 HAS_BITCODE=false
+HAS_TESTING=false
+HAS_IPA_BUILD=true
 OUTPUT_NAME=""
 TEAM_ID=""
+TEST_DESTINATION="platform=iOS Simulator,name=iPhone 13"
+SRC_DIR="${PWD}"
 
 EXPORT_PLIST=""
 PROVISIONING_PROFILE="" #reserver
 
 USERNAME=""
 PASSWORD=""
+API_KEY=""
+API_ISSUER=""
+AUTH_KEY=""
+
+GOOGLE_SERVICE_PLIST=""
 
 # get parameters of script
 
@@ -55,13 +64,26 @@ case $key in
     -u|--user)
     USERNAME="$2"
     PASSWORD="$3"
-    if [ PASSWORD == "" ]; then
+    if [ "$PASSWORD" == "" ]; then
         echo "ERROR: $1 need 2 parameters"
         exit
     fi
     shift # past argument
     shift # past value 1
     shift # past value 2
+    ;;
+    -key|--key)
+    API_KEY="$2"
+    API_ISSUER="$3"
+    AUTH_KEY="$4"
+    if [ "$AUTH_KEY" == "" ]; then
+        echo "ERROR: $1 need 3 parameters"
+        exit
+    fi
+    shift # past argument
+    shift # past value 1
+    shift # past value 2
+    shift # past value 3
     ;;
     -v|--version)
     SETUP_VERSION="$2"
@@ -83,6 +105,11 @@ case $key in
     shift # past argument
     shift # past value
     ;;
+    -gsp|--googlePlist)
+    GOOGLE_SERVICE_PLIST=$2
+    shift # past argument
+    shift # past value
+    ;;
     -ip|--initPods)
     IS_PODS_INIT=true
     shift # past argument
@@ -95,6 +122,18 @@ case $key in
     HAS_BITCODE=true
     shift # past argument
     ;;
+    -test|--test)
+    TEST_VALUE="$2"
+    HAS_TESTING=true
+    HAS_IPA_BUILD=false
+    if [ "$TEST_VALUE" == "" ]; then
+        echo "WARNING: $1 need 1 parameter: test platform. Default is ${TEST_DESTINATION}"
+    else
+        TEST_DESTINATION="$TEST_VALUE"
+    fi
+    shift # past argument
+    shift # past value
+    ;;
     -h|--help)
     echo ""
     echo "Help for call build script with parameters:"
@@ -102,13 +141,16 @@ case $key in
     echo "  -c, --configuration  : name of configuration. Default is Release."
     echo "  -s, --scheme         : name of target scheme. Default is the same as project name."
     echo "  -u, --user           : 2 params: login password. It specialized user, who created in Connection of developer programm. If defined then App will be uploaded to Store."
+    echo "  -key, --key          : 3 params: apiKey, apiIssuer and path to key with p8. It specialized user, who created in Connection of developer programm. If defined then App will be uploaded to Store."
     echo "  -v, --version        : number of bundle version of the App. If has 'auto' value then will be detected from tags. Default auto."
     echo "  -o, --output         : name of out ipa file. Default is SchemeName.ipa."
     echo "  -t, --team           : team identifier of your developer program for a upload IPA to Connection AppSore. If defined -ep doesn't meater and export plist will created automaticle."
-    echo "  -ep, --exportPlist   : export plist file. When team is empty has default value of AdHoc.plist or AppStore.plist when defined -u/--user."
+    echo "  -ep, --exportPlist   : export plist file. When team is empty has default value of AdHoc.plist or AppStore.plist when defined -t/--team."
+    echo "  -gsp, --googlePlist  : path to GoogleService.plist with information for sending to Firebase/Crashlytics"
     echo "  -ip, --initPods      : If selected then will update Pods as is as from 'Pods.lock' in a start. Default is not selected."
     echo "  -at, --addTag        : If selected then will add Tag after build. Default is not selected."
     echo "  -bc, --bitcode       : If selected then will export with bitcode (when defined team). Default is not selected."
+    echo "  -test, --test        : If selected then will build and run tests for special destination who you can choise. Default is not selected. Example of destination: 'platform=iOS Simulator,name=iPhone 12,OS=14.0'"
     echo ""
     echo "Emample: sh build.sh -p ProjectName -ip -t --version auto\n\n"
     exit 0
@@ -125,7 +167,7 @@ set -- "${POSITIONAL[@]}" # restore positional parameters
 
 # Initalize
 
-APP_BUILD_PATH="${PWD}/.build"
+APP_BUILD_PATH="${SRC_DIR}/.build"
 BUILD_DIR="${APP_BUILD_PATH}/xcode"
 APP_CURRENT_BUILD_PATH="${APP_BUILD_PATH}/Current"
 APP_CONFIG_PATH="./build.config"
@@ -150,6 +192,14 @@ if [ "$EXPORT_PLIST" == "" ]; then
     else
         EXPORT_PLIST="./AppStore.plist"
     fi
+fi
+
+if [ -d "${PROJECT_NAME}.xcworkspace" ]; then
+    XCODE_PROJECT="-workspace ${PROJECT_NAME}.xcworkspace"
+    echo "Using for workspace: ${XCODE_PROJECT}\n"
+else
+    XCODE_PROJECT="-project ${PROJECT_NAME}.xcodeproj"
+    echo "Start for project: ${XCODE_PROJECT}\n"
 fi
 
 # Setup version
@@ -199,20 +249,13 @@ createIPA()
     local EXPORT_PLIST=$3
     local PROVISIONING_PROFILE=$4
 
-    ACTION="clean archive"
-    APP="${BUILD_DIR}/${CONFIGURATION_NAME}-iphoneos/${PROJECT_NAME}.app"
+    local ACTION="clean archive"
+    APP_DIR="${BUILD_DIR}/${CONFIGURATION_NAME}-iphoneos"
+    APP="${APP_DIR}/${PROJECT_NAME}.app"
     ARCHIVE_PATH="${BUILD_DIR}/${SCHEME_NAME}.xcarchive"
     
     clearCurrentBuild
     mkdir -p "${APP_CURRENT_BUILD_PATH}"
-
-    if [ -d "${PROJECT_NAME}.xcworkspace" ]; then
-        XCODE_PROJECT="-workspace ${PROJECT_NAME}.xcworkspace"
-        echo "Start for workspace!!!\n"
-    else
-        XCODE_PROJECT="-project ${PROJECT_NAME}.xcodeproj"
-        echo "Start for workspace!!!\n"
-    fi
     
     PROVISIONING_PROFILE_PARAMS=""
     if [ "${PROVISIONING_PROFILE}" != "" ]; then
@@ -250,6 +293,30 @@ createIPA()
     checkExit
     echo "Created .ipa for ${PROJECT_NAME}\n"
 
+    if [ "$GOOGLE_SERVICE_PLIST" != "" ] ; then
+        uploadSymbolesToFirebase
+    fi
+}
+
+uploadSymbolesToFirebase(){
+    echo "dSYMs files uploading to Firebase/Crashlytics"
+    find "${APP_DIR}" -name "*.dSYM" | xargs -I \{\}  echo \{\} 
+    find "${APP_DIR}" -name "*.dSYM" | xargs -I \{\} "${SRC_DIR}/Pods/FirebaseCrashlytics/upload-symbols" -gsp "${SRC_DIR}/${GOOGLE_SERVICE_PLIST}" -p ios \{\}
+    checkExit
+    echo "dSYMs uploaded to Firebase for ${PROJECT_NAME}\n"
+}
+
+tests(){
+    echo "Strarting Tests with distination: ${TEST_DESTINATION}\n\n"
+    local ACTION="clean build test"
+    xcodebuild \
+    $ACTION \
+    $XCODE_PROJECT \
+    -scheme ${SCHEME_NAME} \
+    -destination "${TEST_DESTINATION}"
+
+    checkExit
+    echo "Tests finished for ${PROJECT_NAME}\n\n"
 }
 
 createIpaAndSave(){
@@ -276,8 +343,8 @@ createIpaAndSave(){
 }
 
 tagCommit(){
-    git tag -f -a "${BUILD_VERSION_TAG_GROUP_NAME}/${CURRENT_PROJECT_VERSION}" -m build
-    git push -f --tags
+	git tag -f -a "${BUILD_VERSION_TAG_GROUP_NAME}/${CURRENT_PROJECT_VERSION}" -m build
+	git push -f --tags
     checkExit
     echo "Tag addition complete"
 }
@@ -333,19 +400,29 @@ copyToDownload(){
 }
 
 podSetup(){
-    if [ -f Podfile.lock ]; then
-        rm -rf ~/Library/Caches/CocoaPods
-        rm -rf Pods
-        pod install --repo-update
-        checkExit
-    elif [ -f Podfile ]; then
-        pod update
-        checkExit
-    fi
+	if [ -f Podfile.lock ]; then
+		rm -rf ~/Library/Caches/CocoaPods
+		rm -rf Pods
+	    pod install --repo-update
+	    checkExit
+	elif [ -f Podfile ]; then
+		pod update
+		checkExit
+	fi
 }
 
-uploadToStore(){
-    xcrun altool --upload-app -f "${IPA_PATH}" -u $USERNAME -p $PASSWORD
+uploadToStoreUser(){
+    xcrun altool --upload-app -f "${IPA_PATH}" -t "iOS" -u $USERNAME -p $PASSWORD
+    checkExit
+    echo "Application uploading finished with success"
+}
+
+uploadToStoreKey(){
+    KEYS_DIR="${PWD}/private_keys"
+    rm -rf "${KEYS_DIR}"
+    mkdir -p "${KEYS_DIR}"
+    cp -f "${AUTH_KEY}" "${KEYS_DIR}/AuthKey_${API_KEY}.p8"
+    xcrun altool --upload-app -f "${IPA_PATH}" -t "iOS" --apiKey "${API_KEY}" --apiIssuer "${API_ISSUER}"
     checkExit
     echo "Application uploading finished with success"
 }
@@ -365,15 +442,26 @@ echo "SCHEME_NAME          = ${SCHEME_NAME}"
 echo "OUTPUT_NAME          = ${OUTPUT_NAME}"
 cat "$APP_CONFIG_PATH"
 
-createIpaAndSave "${CONFIGURATION_NAME}" "${SCHEME_NAME}" "${EXPORT_PLIST}" "${PROVISIONING_PROFILE}"
+if $HAS_TESTING ; then
+    tests
+fi
+
+if $HAS_IPA_BUILD ; then
+    createIpaAndSave "${CONFIGURATION_NAME}" "${SCHEME_NAME}" "${EXPORT_PLIST}" "${PROVISIONING_PROFILE}"
+fi
 
 if [ "$USERNAME" != "" ] ; then
     echo ""
     echo "Starting upload to store:"
     echo "USERNAME          = ${USERNAME}"
-    echo "PASSWORD          = ${PASSWORD}"
 
-    uploadToStore
+    uploadToStoreUser
+elif [ "$API_KEY" != "" ] ; then
+    echo ""
+    echo "Starting upload to store:"
+    echo "API KEY          = ${API_KEY}"
+
+    uploadToStoreKey
 fi
 
 if $IS_TAG_VERSION ; then
