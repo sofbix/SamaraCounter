@@ -7,13 +7,13 @@ PODS:
     - BxObjC/Control/ShakeAnimation
     - BxObjC/Control/TextView
     - BxTextField
-  - BxObjC/Common (1.9.0)
-  - BxObjC/Control/Navigation (1.9.0):
+  - BxObjC/Common (1.9.3)
+  - BxObjC/Control/Navigation (1.9.3):
     - BxObjC/Common
     - BxObjC/Control/ShakeAnimation
-  - BxObjC/Control/Rate (1.9.0)
-  - BxObjC/Control/ShakeAnimation (1.9.0)
-  - BxObjC/Control/TextView (1.9.0)
+  - BxObjC/Control/Rate (1.9.3)
+  - BxObjC/Control/ShakeAnimation (1.9.3)
+  - BxObjC/Control/TextView (1.9.3)
   - BxTextField (1.11)
   - CircularSpinner (1.4.1)
   - CodableAlamofire (1.1.2):
@@ -21,20 +21,20 @@ PODS:
   - Fuzi (3.1.3)
   - GTProgressBar (0.3.3)
   - KeychainAccess (4.2.2)
-  - PromiseKit (6.15.3):
-    - PromiseKit/CorePromise (= 6.15.3)
-    - PromiseKit/Foundation (= 6.15.3)
-    - PromiseKit/UIKit (= 6.15.3)
-  - PromiseKit/CorePromise (6.15.3)
-  - PromiseKit/Foundation (6.15.3):
+  - PromiseKit (6.18.1):
+    - PromiseKit/CorePromise (= 6.18.1)
+    - PromiseKit/Foundation (= 6.18.1)
+    - PromiseKit/UIKit (= 6.18.1)
+  - PromiseKit/CorePromise (6.18.1)
+  - PromiseKit/Foundation (6.18.1):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (6.15.3):
+  - PromiseKit/UIKit (6.18.1):
     - PromiseKit/CorePromise
-  - Realm (10.18.0):
-    - Realm/Headers (= 10.18.0)
-  - Realm/Headers (10.18.0)
-  - RealmSwift (10.18.0):
-    - Realm (= 10.18.0)
+  - Realm (10.32.3):
+    - Realm/Headers (= 10.32.3)
+  - Realm/Headers (10.32.3)
+  - RealmSwift (10.32.3):
+    - Realm (= 10.32.3)
   - RSLoadingView (1.1.3)
   - XMLDictionary (1.4.1)
 
@@ -79,19 +79,19 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   BxInputController: 218d9c6b42c984083d17ad99b2c6808d0bb874a8
-  BxObjC: a9195881db5cc80afff633d400f3d16a56a749c9
+  BxObjC: aec2f74a8046843ed752eade94874d5dea0e6a15
   BxTextField: baba0ef872edf277d5e240bbbf66b8e428a17acc
   CircularSpinner: da2c837faf57f4dc0631311a0a82dc81a3c107cf
   CodableAlamofire: b7adfb2e5e980392014b4b3f3b8b62c01b9de4aa
   Fuzi: 4c10d6449c0b49a85cd75b13844c559c0fc71220
   GTProgressBar: a480283ecb0ada50de16c71e634892826928f640
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
-  PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
-  Realm: b8b0a36bf48c39c50fd8cee7ac34005e6d887ddd
-  RealmSwift: fe2f33d731f47aaf4c3618930f9f7cf7b935c33f
+  PromiseKit: 49d70c53d5d20e346beaea4b276b5dd2ab446bb4
+  Realm: fdf6732924dc5e69e30e0db2c11e869f92b53f3d
+  RealmSwift: 7c181da8fa1c2fe613656a77c198d6a3dc3879a1
   RSLoadingView: c7749afdd455229643e8f34277d0695973a15b1a
   XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
 
 PODFILE CHECKSUM: dd8a533ec5b12281ab210ae6b6ed113246555ef3
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3
