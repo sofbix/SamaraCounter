@@ -60,36 +60,57 @@ struct SamGESSendDataService : SendDataService {
     
     func map(_ input: Input) -> Promise<Data> {
         
-        let account = input.electricAccountNumberRow.value ?? ""
-        
-        
-        
-        let dayValue = input.dayElectricCountRow.value ?? ""
-        let nightValue = input.nightElectricCountRow.value ?? ""
-        
-        
-        let requestString = nightValue.isEmpty
-            ? requestParams(index: 0, value: dayValue)
-            : requestParams(index: 0, value: dayValue) + requestParams(index: 1, value: nightValue)
-        
-        let body = "_token=MgxTvzyQoFu8ZkXszqvUtrDdd6WiEYfVWLssbiWR&ls=\(account)\(requestString)"
-        
-        guard let bodyData = body.data(using: .utf8) else {
-            return .init(error: NSError(domain: self.title, code: 404, userInfo: [NSLocalizedDescriptionKey: "\(self.title): Неверный запрос на сервер"]))
+        var account = input.electricAccountNumberRow.value ?? ""
+        if account.first == "0" {
+            account.removeFirst()
         }
         
-        let headers = [
-            "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8",
-            "Content-Length" : "\(bodyData.count)",
-            "Host" : "lk.samges.ru",
-            "Cookie" : "_ym_uid=1635105962372771396; _ym_d=1668535546; _ym_isad=2; _fbp=fb.1.1668535546179.1155967397; _ga=GA1.2.1704088370.1668535550; _gid=GA1.2.1685251127.1668535550; XSRF-TOKEN=eyJpdiI6ImFTQzVaTkRDNG9QR1RzWERBeTJDSmc9PSIsInZhbHVlIjoiVVhaa1ZleHo3YWJEaGlkY2FHRWNjRXZDTzRVQ2hNQ3Q3MjJsOVhOTVVhd2R5ZUVGNmlhVnY1bHE1cVUrOHBuNSIsIm1hYyI6IjViMDI0Y2JkNDMyMzY0YTQyYzRhZTFiMThjNjE1ZGYwNTliZDgwNjE2N2YwMDViYjQzMWJjNTQ4NTFhZmY1OTMifQ%3D%3D; laravel_session=eyJpdiI6InlRcUxBYzRuU3BWRkRlWmZBUUc1cUE9PSIsInZhbHVlIjoidWFsQ200TnY1T2s4SFlhU3ZkaTlFOWxsVGtLa2lXVUZFZXFQM2VKanNYalRodVluUlN6SFwvbVRHeGg5Ymg4N2ttZ1hBWHpBdXdVb2Ftam5wbG5iQ2FiWWRlckJYNEtsS0o5Sk12d2ZqaWo2WmFyZVoyUFFyeGNIRVpNdmxYYkl5IiwibWFjIjoiM2U1MzE0NGI3YjE3YmEyYzcxYmVkYWU4MjEyODQxN2Q1NGI0Zjc4ZTgwOWIwZmUwYmFkMjQ4YTA1OTQ4ZWVmNiJ9; _ym_visorc=w"
+        let getHeaders = [
+            "Host" : "lk.samges.ru"
         ]
-
-        var request = try! URLRequest(url: "https://lk.samges.ru/counters/\(account)", method: .post, headers: headers)
-        request.httpBody = bodyData
         
-        return service(request)
+        let getRequest = try! URLRequest(url: "https://lk.samges.ru/counters/\(account)", method: .get, headers: getHeaders)
+        
+        return service(getRequest, isNeedCheckOutput: false).then{ getData in
+            
+            guard let httpString = String(data: getData, encoding: .utf8) else {
+                return Promise<Data>(error: NSError(domain: self.title, code: 404, userInfo: [NSLocalizedDescriptionKey: "\(self.title): Невозможно найти токен"]))
+            }
+            
+            let searchTokenRegex = try? NSRegularExpression(pattern: #"(?<=(<input type="hidden" name="_token" value="))(.*?)(?=(">))"#, options: [])
+            
+            let range = NSRange(location: 0, length: httpString.count)
+            guard let tokenResult = searchTokenRegex?.firstMatch(in: httpString, options: [], range: range) else {
+                return Promise<Data>(error: NSError(domain: self.title, code: 404, userInfo: [NSLocalizedDescriptionKey: "\(self.title): Не найден токен"]))
+            }
+            
+            let token = (httpString as NSString).substring(with: tokenResult.range)
+            
+            let dayValue = input.dayElectricCountRow.value ?? ""
+            let nightValue = input.nightElectricCountRow.value ?? ""
+            
+            
+            let requestString = nightValue.isEmpty
+                ? requestParams(index: 0, value: dayValue)
+                : requestParams(index: 0, value: dayValue) + requestParams(index: 1, value: nightValue)
 
+            let body = "_token=\(token)&ls=\(account)\(requestString)"
+            
+            guard let bodyData = body.data(using: .utf8) else {
+                return Promise<Data>(error: NSError(domain: self.title, code: 404, userInfo: [NSLocalizedDescriptionKey: "\(self.title): Неверный запрос на сервер"]))
+            }
+            
+            let headers = [
+                "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8",
+                "Content-Length" : "\(bodyData.count)",
+                "Host" : "lk.samges.ru"
+            ]
+
+            var request = try! URLRequest(url: "https://lk.samges.ru/counters/\(account)", method: .post, headers: headers)
+            request.httpBody = bodyData
+            
+            return service(request)
+        }
     }
     
     func checkOutputData(with data: Data) -> String? {
@@ -97,9 +118,11 @@ struct SamGESSendDataService : SendDataService {
         if let stringData = String(data: data, encoding: .utf8)
             
         {
-            if stringData == "Показание успешно передано по счетчику" {
+            if stringData.contains("Показание успешно передано по счетчику") {
                 return nil
-            } else {
+            } else if stringData.contains("недоступно 1 день") {
+                return "\(self.title): Показания уже были переданы, следующий прием через день"
+            } else{
                 print(stringData)
                 return "Что то пошло не так с СамГЭС"
             }
