@@ -71,17 +71,17 @@ struct SamGESSendDataService : SendDataService {
         
         let getRequest = try! URLRequest(url: "https://lk.samges.ru/counters/\(account)", method: .get, headers: getHeaders)
         
-        return service(getRequest, isNeedCheckOutput: false).then{ getData in
+        return service(getRequest, isNeedCheckOutput: false).then{ getData -> Promise<Data> in
             
             guard let httpString = String(data: getData, encoding: .utf8) else {
-                return Promise<Data>(error: NSError(domain: self.title, code: 404, userInfo: [NSLocalizedDescriptionKey: "\(self.title): Невозможно найти токен"]))
+                return .init(error: NSError(domain: self.title, code: 404, userInfo: [NSLocalizedDescriptionKey: "\(self.title): Невозможно найти токен"]))
             }
             
             let searchTokenRegex = try? NSRegularExpression(pattern: #"(?<=(<input type="hidden" name="_token" value="))(.*?)(?=(">))"#, options: [])
             
             let range = NSRange(location: 0, length: httpString.count)
             guard let tokenResult = searchTokenRegex?.firstMatch(in: httpString, options: [], range: range) else {
-                return Promise<Data>(error: NSError(domain: self.title, code: 404, userInfo: [NSLocalizedDescriptionKey: "\(self.title): Не найден токен"]))
+                return .init(error: NSError(domain: self.title, code: 404, userInfo: [NSLocalizedDescriptionKey: "\(self.title): Не найден токен"]))
             }
             
             let token = (httpString as NSString).substring(with: tokenResult.range)
@@ -97,7 +97,7 @@ struct SamGESSendDataService : SendDataService {
             let body = "_token=\(token)&ls=\(account)\(requestString)"
             
             guard let bodyData = body.data(using: .utf8) else {
-                return Promise<Data>(error: NSError(domain: self.title, code: 404, userInfo: [NSLocalizedDescriptionKey: "\(self.title): Неверный запрос на сервер"]))
+                return .init(error: NSError(domain: self.title, code: 404, userInfo: [NSLocalizedDescriptionKey: "\(self.title): Неверный запрос на сервер"]))
             }
             
             let headers = [
