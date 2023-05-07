@@ -15,6 +15,9 @@ PODS:
   - BxObjC/Control/ShakeAnimation (1.9.3)
   - BxObjC/Control/TextView (1.9.3)
   - BxTextField (1.11)
+  - Charts (3.6.1):
+    - Charts/Core (= 3.6.1)
+  - Charts/Core (3.6.1)
   - CircularSpinner (1.4.1)
   - CodableAlamofire (1.1.2):
     - Alamofire (~> 4.0)
@@ -41,13 +44,14 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - BxInputController/Common
+  - Charts (from `https://github.com/corteggo/Charts`, tag `v3.6.1`)
   - CircularSpinner (from `https://github.com/Altarix/CircularSpinner.git`)
   - CodableAlamofire
   - Fuzi
   - GTProgressBar
   - KeychainAccess
   - PromiseKit
-  - RealmSwift
+  - RealmSwift (= 10.32.3)
   - RSLoadingView
   - XMLDictionary
 
@@ -68,10 +72,16 @@ SPEC REPOS:
     - XMLDictionary
 
 EXTERNAL SOURCES:
+  Charts:
+    :git: https://github.com/corteggo/Charts
+    :tag: v3.6.1
   CircularSpinner:
     :git: https://github.com/Altarix/CircularSpinner.git
 
 CHECKOUT OPTIONS:
+  Charts:
+    :git: https://github.com/corteggo/Charts
+    :tag: v3.6.1
   CircularSpinner:
     :commit: 225a169e5bf250ace0af1ba2d15dd02926e9a6a1
     :git: https://github.com/Altarix/CircularSpinner.git
@@ -81,6 +91,7 @@ SPEC CHECKSUMS:
   BxInputController: 218d9c6b42c984083d17ad99b2c6808d0bb874a8
   BxObjC: aec2f74a8046843ed752eade94874d5dea0e6a15
   BxTextField: baba0ef872edf277d5e240bbbf66b8e428a17acc
+  Charts: ce50a6f12464d0590feebcf29453c7a21b3a46e6
   CircularSpinner: da2c837faf57f4dc0631311a0a82dc81a3c107cf
   CodableAlamofire: b7adfb2e5e980392014b4b3f3b8b62c01b9de4aa
   Fuzi: 4c10d6449c0b49a85cd75b13844c559c0fc71220
@@ -92,6 +103,6 @@ SPEC CHECKSUMS:
   RSLoadingView: c7749afdd455229643e8f34277d0695973a15b1a
   XMLDictionary: fa07b6ff422b3a91d47a5de9bc82e3fc04fbd167
 
-PODFILE CHECKSUM: dd8a533ec5b12281ab210ae6b6ed113246555ef3
+PODFILE CHECKSUM: 945ae12c3a6116fdb4c611e65550f3797b1ed9d9
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

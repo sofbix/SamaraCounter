@@ -13,6 +13,8 @@
 		C3B94D6527269D9F00B5CEAC /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B94D6427269D9F00B5CEAC /* UIButton.swift */; };
 		C3B94D672726A38300B5CEAC /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B94D662726A38200B5CEAC /* DateFormatter.swift */; };
 		C3B94D69272C65F800B5CEAC /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B94D68272C65F800B5CEAC /* String.swift */; };
+		C3EE61852A084DCB00BB3260 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EE61842A084DCB00BB3260 /* Settings.swift */; };
+		C3EE61882A084EE500BB3260 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EE61872A084EE500BB3260 /* StatisticsViewController.swift */; };
 		E30F304025928C49000DD810 /* SendDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F303E25928C49000DD810 /* SendDataService.swift */; };
 		E30F304125928C49000DD810 /* RKSSendDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F303F25928C49000DD810 /* RKSSendDataService.swift */; };
 		E334ED142593D85800A84F4B /* SamGESSendDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E334ED132593D85800A84F4B /* SamGESSendDataService.swift */; };
@@ -59,6 +61,8 @@
 		C3B94D6427269D9F00B5CEAC /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		C3B94D662726A38200B5CEAC /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		C3B94D68272C65F800B5CEAC /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		C3EE61842A084DCB00BB3260 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		C3EE61872A084EE500BB3260 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		E30F303E25928C49000DD810 /* SendDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendDataService.swift; sourceTree = "<group>"; };
 		E30F303F25928C49000DD810 /* RKSSendDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKSSendDataService.swift; sourceTree = "<group>"; };
 		E334ED132593D85800A84F4B /* SamGESSendDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamGESSendDataService.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 		C31FA4722630773E00740E5C /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				C3EE61862A084EE500BB3260 /* Statistics */,
 				C31FA4732630775700740E5C /* Counters */,
 				C3B94D6027269CE500B5CEAC /* History */,
 			);
@@ -159,6 +164,14 @@
 				C3B94D68272C65F800B5CEAC /* String.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C3EE61862A084EE500BB3260 /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				C3EE61872A084EE500BB3260 /* StatisticsViewController.swift */,
+			);
+			path = Statistics;
 			sourceTree = "<group>";
 		};
 		E30F303D25928C49000DD810 /* Network */ = {
@@ -206,6 +219,7 @@
 				E363B8D3258FB782000609D5 /* Assets.xcassets */,
 				E363B8D5258FB782000609D5 /* LaunchScreen.storyboard */,
 				E363B8D8258FB782000609D5 /* Info.plist */,
+				C3EE61842A084DCB00BB3260 /* Settings.swift */,
 			);
 			path = SamaraCounter;
 			sourceTree = "<group>";
@@ -420,9 +434,11 @@
 				C31FA4752630777800740E5C /* WaterCounterViewModel.swift in Sources */,
 				E30F304125928C49000DD810 /* RKSSendDataService.swift in Sources */,
 				E363B8CF258FB77F000609D5 /* FlatCountersDetailsController.swift in Sources */,
+				C3EE61882A084EE500BB3260 /* StatisticsViewController.swift in Sources */,
 				E334ED142593D85800A84F4B /* SamGESSendDataService.swift in Sources */,
 				E363B906258FBAAB000609D5 /* DatabaseManager.swift in Sources */,
 				E363B8CB258FB77F000609D5 /* AppDelegate.swift in Sources */,
+				C3EE61852A084DCB00BB3260 /* Settings.swift in Sources */,
 				C3B94D672726A38300B5CEAC /* DateFormatter.swift in Sources */,
 				E3C532EE2595285200F42646 /* EsPlusSendDataService.swift in Sources */,
 				C3B94D69272C65F800B5CEAC /* String.swift in Sources */,

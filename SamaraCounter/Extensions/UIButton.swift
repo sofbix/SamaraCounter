@@ -17,7 +17,7 @@ extension UIButton {
         
         let btSend = UIButton(frame: CGRect(x: 20, y: 10, width: 60, height: 40))
         btSend.layer.cornerRadius = 8
-        btSend.backgroundColor = .systemRed
+        btSend.backgroundColor = Settings.Color.brand
         btSend.setTitleColor(.white, for: .normal)
         btSend.setTitleColor(.yellow, for: .highlighted)
         btSend.setTitle(title, for: .normal)
