@@ -22,6 +22,7 @@ class FlatCountersDetailsController: BxInputController {
     
     var id: String = ""
     var order: Int = 0
+    var fields: [String: String] = [:]
     
     override var isEditing: Bool {
         didSet {
@@ -53,13 +54,13 @@ class FlatCountersDetailsController: BxInputController {
     
     private(set) var waterCounters: [WaterCounterViewModel] = []
     
-    let servicesRows : [CheckProviderProtocol] = [
+    private lazy var servicesRows : [CheckProviderProtocol] = [
         CheckProviderRow(RKSSendDataService()),
         CheckProviderRow(EsPlusSendDataService()),
         CheckProviderRow(SamGESSendDataService())
     ]
     
-    let sendFooter: UIView = UIButton.createOnView(title: "Отправить показания", target: self, action: #selector(start))
+    private lazy var sendFooter: UIView = UIButton.createOnView(title: "Отправить показания", target: self, action: #selector(start))
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +83,15 @@ class FlatCountersDetailsController: BxInputController {
         
     }
     
-    func updateData() {
+    private func updateRow(_ row: BxInputTextRow, with fieldName: String, defaultValue: String) {
+        if let value = fields[fieldName] {
+            row.value = value
+        } else {
+            row.value = defaultValue
+        }
+    }
+
+    private func updateData() {
         
         var flatEntity = FlatEntity()
         
@@ -110,23 +119,23 @@ class FlatCountersDetailsController: BxInputController {
         
         id = flatEntity.id
         order = flatEntity.order
-        
-        surnameRow.value = flatEntity.surname
-        nameRow.value = flatEntity.name
-        patronymicRow.value = flatEntity.patronymic
-        streetRow.value = flatEntity.street
-        homeNumberRow.value = flatEntity.homeNumber
-        flatNumberRow.value = flatEntity.flatNumber
-        phoneNumberRow.value = flatEntity.phoneNumber
-        emailRow.value = flatEntity.email
-        rksAccountNumberRow.value = flatEntity.rksAccountNumber
-        esPlusAccountNumberRow.value = flatEntity.esPlusAccountNumber
-        commentsRow.value = flatEntity.comments
-        
-        electricAccountNumberRow.value = "\(flatEntity.electricAccountNumber)"
-        electricCounterNumberRow.value = "\(flatEntity.electricCounterNumber)"
-        dayElectricCountRow.value = "\(flatEntity.dayElectricCount)"
-        nightElectricCountRow.value = "\(flatEntity.nightElectricCount)"
+
+        updateRow(surnameRow, with: "surname", defaultValue: flatEntity.surname)
+        updateRow(nameRow, with: "name", defaultValue: flatEntity.name)
+        updateRow(patronymicRow, with: "patronymic", defaultValue: flatEntity.patronymic)
+        updateRow(streetRow, with: "street", defaultValue: flatEntity.street)
+        updateRow(homeNumberRow, with: "homeNumber", defaultValue: flatEntity.homeNumber)
+        updateRow(flatNumberRow, with: "flatNumber", defaultValue: flatEntity.flatNumber)
+        updateRow(phoneNumberRow, with: "phoneNumber", defaultValue: flatEntity.phoneNumber)
+        updateRow(emailRow, with: "email", defaultValue: flatEntity.email)
+        updateRow(rksAccountNumberRow, with: "rksAccountNumber", defaultValue: flatEntity.rksAccountNumber)
+        updateRow(esPlusAccountNumberRow, with: "esPlusAccountNumber", defaultValue: flatEntity.esPlusAccountNumber)
+        updateRow(commentsRow, with: "comments", defaultValue: flatEntity.comments)
+
+        updateRow(electricAccountNumberRow, with: "electricAccountNumber", defaultValue: flatEntity.electricAccountNumber)
+        updateRow(electricCounterNumberRow, with: "electricCounterNumber", defaultValue: flatEntity.electricCounterNumber)
+        updateRow(dayElectricCountRow, with: "dayElectricCount", defaultValue: flatEntity.dayElectricCount)
+        updateRow(nightElectricCountRow, with: "nightElectricCount", defaultValue: flatEntity.nightElectricCount)
         
         var sections = [
             BxInputSection(headerText: "Данные собственника",
@@ -136,8 +145,8 @@ class FlatCountersDetailsController: BxInputController {
         ]
         
         waterCounters = []
-        for waterCounterEntity in flatEntity.waterCounters {
-            let waterCounter = WaterCounterViewModel(entity: waterCounterEntity)
+        for (index, waterCounterEntity) in flatEntity.waterCounters.enumerated() {
+            let waterCounter = WaterCounterViewModel(entity: waterCounterEntity, fields: fields, index: index)
             
             waterCounters.append(waterCounter)
             sections.append(waterCounter.section)

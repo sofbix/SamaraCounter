@@ -15,6 +15,8 @@
 		C3B94D69272C65F800B5CEAC /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B94D68272C65F800B5CEAC /* String.swift */; };
 		C3EE61852A084DCB00BB3260 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EE61842A084DCB00BB3260 /* Settings.swift */; };
 		C3EE61882A084EE500BB3260 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EE61872A084EE500BB3260 /* StatisticsViewController.swift */; };
+		C3EE618C2A0851DA00BB3260 /* NavigationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EE618A2A0851DA00BB3260 /* NavigationRoute.swift */; };
+		C3EE618D2A0851DA00BB3260 /* NavigationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EE618B2A0851DA00BB3260 /* NavigationUtils.swift */; };
 		E30F304025928C49000DD810 /* SendDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F303E25928C49000DD810 /* SendDataService.swift */; };
 		E30F304125928C49000DD810 /* RKSSendDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F303F25928C49000DD810 /* RKSSendDataService.swift */; };
 		E334ED142593D85800A84F4B /* SamGESSendDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E334ED132593D85800A84F4B /* SamGESSendDataService.swift */; };
@@ -63,6 +65,9 @@
 		C3B94D68272C65F800B5CEAC /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		C3EE61842A084DCB00BB3260 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		C3EE61872A084EE500BB3260 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		C3EE618A2A0851DA00BB3260 /* NavigationRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationRoute.swift; sourceTree = "<group>"; };
+		C3EE618B2A0851DA00BB3260 /* NavigationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationUtils.swift; sourceTree = "<group>"; };
+		C3EE618E2A08594800BB3260 /* SamaraCounter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SamaraCounter.entitlements; sourceTree = "<group>"; };
 		E30F303E25928C49000DD810 /* SendDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendDataService.swift; sourceTree = "<group>"; };
 		E30F303F25928C49000DD810 /* RKSSendDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKSSendDataService.swift; sourceTree = "<group>"; };
 		E334ED132593D85800A84F4B /* SamGESSendDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamGESSendDataService.swift; sourceTree = "<group>"; };
@@ -174,6 +179,15 @@
 			path = Statistics;
 			sourceTree = "<group>";
 		};
+		C3EE61892A0851DA00BB3260 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C3EE618A2A0851DA00BB3260 /* NavigationRoute.swift */,
+				C3EE618B2A0851DA00BB3260 /* NavigationUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		E30F303D25928C49000DD810 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +224,8 @@
 		E363B8C9258FB77F000609D5 /* SamaraCounter */ = {
 			isa = PBXGroup;
 			children = (
+				C3EE618E2A08594800BB3260 /* SamaraCounter.entitlements */,
+				C3EE61892A0851DA00BB3260 /* Utils */,
 				E363B900258FBAAB000609D5 /* DB */,
 				C3B94D6327269D5000B5CEAC /* Extensions */,
 				E30F303D25928C49000DD810 /* Network */,
@@ -428,12 +444,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C31FA47D26307C6C00740E5C /* CheckProviderRow.swift in Sources */,
+				C3EE618C2A0851DA00BB3260 /* NavigationRoute.swift in Sources */,
 				C3B94D6527269D9F00B5CEAC /* UIButton.swift in Sources */,
 				C3B94D6227269D1B00B5CEAC /* HistoryTableController.swift in Sources */,
 				E363B904258FBAAB000609D5 /* FlatEntity.swift in Sources */,
 				C31FA4752630777800740E5C /* WaterCounterViewModel.swift in Sources */,
 				E30F304125928C49000DD810 /* RKSSendDataService.swift in Sources */,
 				E363B8CF258FB77F000609D5 /* FlatCountersDetailsController.swift in Sources */,
+				C3EE618D2A0851DA00BB3260 /* NavigationUtils.swift in Sources */,
 				C3EE61882A084EE500BB3260 /* StatisticsViewController.swift in Sources */,
 				E334ED142593D85800A84F4B /* SamGESSendDataService.swift in Sources */,
 				E363B906258FBAAB000609D5 /* DatabaseManager.swift in Sources */,
@@ -626,6 +644,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SamaraCounter/SamaraCounter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FDK83T8QNS;
@@ -647,6 +666,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SamaraCounter/SamaraCounter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FDK83T8QNS;
