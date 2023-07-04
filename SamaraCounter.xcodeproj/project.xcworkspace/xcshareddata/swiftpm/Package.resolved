@@ -1,0 +1,104 @@
+{
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "bc268c28fb170f494de9e9927c371b8342979ece",
+        "version" : "5.7.1"
+      }
+    },
+    {
+      "identity" : "bxinputcontroller",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ByteriX/BxInputController.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "7e49885efb3744332d655a6ca2f92ecc598bc4d9"
+      }
+    },
+    {
+      "identity" : "bxobjc",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ByteriX/BxObjC.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "f42b739d143074d67c97fc2565311298d0f1d8aa"
+      }
+    },
+    {
+      "identity" : "bxtextfield",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ByteriX/BxTextField.git",
+      "state" : {
+        "revision" : "44754e3528d84046c17aa8430b888417b25481c1",
+        "version" : "1.12.4"
+      }
+    },
+    {
+      "identity" : "charts",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/corteggo/Charts",
+      "state" : {
+        "revision" : "6e4dcf45ec24ee6f2a37aacde54a580dd118978e",
+        "version" : "3.6.1"
+      }
+    },
+    {
+      "identity" : "circularspinner",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ByteriX/CircularSpinner.git",
+      "state" : {
+        "revision" : "0045e1b3e442d4d4599f5b4260af62ac5b31004b",
+        "version" : "1.4.4"
+      }
+    },
+    {
+      "identity" : "fuzi",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/cezheng/Fuzi.git",
+      "state" : {
+        "revision" : "f08c8323da21e985f3772610753bcfc652c2103f",
+        "version" : "3.1.3"
+      }
+    },
+    {
+      "identity" : "isamaracounters",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sofbix/iSamaraCounters.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "57c2f0ac6ecff4606875410e5a0731dceb04ab2a"
+      }
+    },
+    {
+      "identity" : "promisekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mxcl/PromiseKit.git",
+      "state" : {
+        "revision" : "8a98e31a47854d3180882c8068cc4d9381bf382d",
+        "version" : "6.22.1"
+      }
+    },
+    {
+      "identity" : "realm-core",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-core.git",
+      "state" : {
+        "revision" : "f1434caadda443b4ed2261b91ea4f43ab1ee2aa5",
+        "version" : "13.15.1"
+      }
+    },
+    {
+      "identity" : "realm-swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/realm/realm-swift.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "5ed2c8ece79e63056641bd517435aaf81563f887"
+      }
+    }
+  ],
+  "version" : 2
+}

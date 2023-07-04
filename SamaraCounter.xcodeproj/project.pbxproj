@@ -3,12 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C31FA4752630777800740E5C /* WaterCounterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31FA4742630777800740E5C /* WaterCounterViewModel.swift */; };
-		C31FA47D26307C6C00740E5C /* CheckProviderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31FA47C26307C6C00740E5C /* CheckProviderRow.swift */; };
+		C379BD452A54940900FBA494 /* CircularSpinner in Frameworks */ = {isa = PBXBuildFile; productRef = C379BD442A54940900FBA494 /* CircularSpinner */; };
+		C379BD482A54942800FBA494 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C379BD472A54942800FBA494 /* Realm */; };
+		C379BD4A2A54942800FBA494 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C379BD492A54942800FBA494 /* RealmSwift */; };
+		C379BD4D2A54943500FBA494 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = C379BD4C2A54943500FBA494 /* Charts */; };
+		C379BD502A54945B00FBA494 /* iSamaraCounters in Frameworks */ = {isa = PBXBuildFile; productRef = C379BD4F2A54945B00FBA494 /* iSamaraCounters */; };
+		C379BD522A54965A00FBA494 /* WaterCounterEntity+WaterCounterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C379BD512A54965A00FBA494 /* WaterCounterEntity+WaterCounterViewModel.swift */; };
+		C379BD542A5496F300FBA494 /* ProgressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C379BD532A5496F300FBA494 /* ProgressService.swift */; };
 		C3B94D6227269D1B00B5CEAC /* HistoryTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B94D6127269D1B00B5CEAC /* HistoryTableController.swift */; };
 		C3B94D6527269D9F00B5CEAC /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B94D6427269D9F00B5CEAC /* UIButton.swift */; };
 		C3B94D672726A38300B5CEAC /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B94D662726A38200B5CEAC /* DateFormatter.swift */; };
@@ -16,10 +21,6 @@
 		C3EE61852A084DCB00BB3260 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EE61842A084DCB00BB3260 /* Settings.swift */; };
 		C3EE61882A084EE500BB3260 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EE61872A084EE500BB3260 /* StatisticsViewController.swift */; };
 		C3EE618C2A0851DA00BB3260 /* NavigationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EE618A2A0851DA00BB3260 /* NavigationRoute.swift */; };
-		C3EE618D2A0851DA00BB3260 /* NavigationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3EE618B2A0851DA00BB3260 /* NavigationUtils.swift */; };
-		E30F304025928C49000DD810 /* SendDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F303E25928C49000DD810 /* SendDataService.swift */; };
-		E30F304125928C49000DD810 /* RKSSendDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F303F25928C49000DD810 /* RKSSendDataService.swift */; };
-		E334ED142593D85800A84F4B /* SamGESSendDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E334ED132593D85800A84F4B /* SamGESSendDataService.swift */; };
 		E363B8CB258FB77F000609D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E363B8CA258FB77F000609D5 /* AppDelegate.swift */; };
 		E363B8CF258FB77F000609D5 /* FlatCountersDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E363B8CE258FB77F000609D5 /* FlatCountersDetailsController.swift */; };
 		E363B8D2258FB77F000609D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E363B8D0258FB77F000609D5 /* Main.storyboard */; };
@@ -30,8 +31,6 @@
 		E363B904258FBAAB000609D5 /* FlatEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E363B901258FBAAB000609D5 /* FlatEntity.swift */; };
 		E363B905258FBAAB000609D5 /* WaterCounterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E363B902258FBAAB000609D5 /* WaterCounterEntity.swift */; };
 		E363B906258FBAAB000609D5 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E363B903258FBAAB000609D5 /* DatabaseManager.swift */; };
-		E3C532EE2595285200F42646 /* EsPlusSendDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C532ED2595285200F42646 /* EsPlusSendDataService.swift */; };
-		EEDAF6CFA17547ABE0F6B920 /* Pods_SamaraCounter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CCACC4A3402F656573D51B4 /* Pods_SamaraCounter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,13 +51,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7C204310CE3D7E02ECB875FC /* Pods-SamaraCounter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamaraCounter.release.xcconfig"; path = "Target Support Files/Pods-SamaraCounter/Pods-SamaraCounter.release.xcconfig"; sourceTree = "<group>"; };
-		7CCACC4A3402F656573D51B4 /* Pods_SamaraCounter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SamaraCounter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C161DC4DA1F8D915E1A44649 /* Pods-SamaraCounter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SamaraCounter.debug.xcconfig"; path = "Target Support Files/Pods-SamaraCounter/Pods-SamaraCounter.debug.xcconfig"; sourceTree = "<group>"; };
 		C31FA4692630681100740E5C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		C31FA46D2630681100740E5C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		C31FA4742630777800740E5C /* WaterCounterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterCounterViewModel.swift; sourceTree = "<group>"; };
-		C31FA47C26307C6C00740E5C /* CheckProviderRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckProviderRow.swift; sourceTree = "<group>"; };
+		C379BD512A54965A00FBA494 /* WaterCounterEntity+WaterCounterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WaterCounterEntity+WaterCounterViewModel.swift"; sourceTree = "<group>"; };
+		C379BD532A5496F300FBA494 /* ProgressService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressService.swift; sourceTree = "<group>"; };
 		C3B94D6127269D1B00B5CEAC /* HistoryTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableController.swift; sourceTree = "<group>"; };
 		C3B94D6427269D9F00B5CEAC /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		C3B94D662726A38200B5CEAC /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
@@ -66,11 +62,7 @@
 		C3EE61842A084DCB00BB3260 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		C3EE61872A084EE500BB3260 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		C3EE618A2A0851DA00BB3260 /* NavigationRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationRoute.swift; sourceTree = "<group>"; };
-		C3EE618B2A0851DA00BB3260 /* NavigationUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationUtils.swift; sourceTree = "<group>"; };
 		C3EE618E2A08594800BB3260 /* SamaraCounter.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SamaraCounter.entitlements; sourceTree = "<group>"; };
-		E30F303E25928C49000DD810 /* SendDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendDataService.swift; sourceTree = "<group>"; };
-		E30F303F25928C49000DD810 /* RKSSendDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKSSendDataService.swift; sourceTree = "<group>"; };
-		E334ED132593D85800A84F4B /* SamGESSendDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamGESSendDataService.swift; sourceTree = "<group>"; };
 		E363B8C7258FB77F000609D5 /* SamaraCounter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SamaraCounter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E363B8CA258FB77F000609D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E363B8CE258FB77F000609D5 /* FlatCountersDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlatCountersDetailsController.swift; sourceTree = "<group>"; };
@@ -87,7 +79,6 @@
 		E363B901258FBAAB000609D5 /* FlatEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatEntity.swift; sourceTree = "<group>"; };
 		E363B902258FBAAB000609D5 /* WaterCounterEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterCounterEntity.swift; sourceTree = "<group>"; };
 		E363B903258FBAAB000609D5 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
-		E3C532ED2595285200F42646 /* EsPlusSendDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EsPlusSendDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +86,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEDAF6CFA17547ABE0F6B920 /* Pods_SamaraCounter.framework in Frameworks */,
+				C379BD502A54945B00FBA494 /* iSamaraCounters in Frameworks */,
+				C379BD4D2A54943500FBA494 /* Charts in Frameworks */,
+				C379BD4A2A54942800FBA494 /* RealmSwift in Frameworks */,
+				C379BD482A54942800FBA494 /* Realm in Frameworks */,
+				C379BD452A54940900FBA494 /* CircularSpinner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,18 +114,8 @@
 		099B48BC7A89A24611CD22E3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7CCACC4A3402F656573D51B4 /* Pods_SamaraCounter.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		78E6826A62653EA70927B1A8 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C161DC4DA1F8D915E1A44649 /* Pods-SamaraCounter.debug.xcconfig */,
-				7C204310CE3D7E02ECB875FC /* Pods-SamaraCounter.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		C31FA4722630773E00740E5C /* Features */ = {
@@ -146,8 +131,6 @@
 		C31FA4732630775700740E5C /* Counters */ = {
 			isa = PBXGroup;
 			children = (
-				C31FA4742630777800740E5C /* WaterCounterViewModel.swift */,
-				C31FA47C26307C6C00740E5C /* CheckProviderRow.swift */,
 				E363B8CE258FB77F000609D5 /* FlatCountersDetailsController.swift */,
 			);
 			path = Counters;
@@ -183,20 +166,9 @@
 			isa = PBXGroup;
 			children = (
 				C3EE618A2A0851DA00BB3260 /* NavigationRoute.swift */,
-				C3EE618B2A0851DA00BB3260 /* NavigationUtils.swift */,
+				C379BD532A5496F300FBA494 /* ProgressService.swift */,
 			);
 			path = Utils;
-			sourceTree = "<group>";
-		};
-		E30F303D25928C49000DD810 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				E30F303E25928C49000DD810 /* SendDataService.swift */,
-				E30F303F25928C49000DD810 /* RKSSendDataService.swift */,
-				E334ED132593D85800A84F4B /* SamGESSendDataService.swift */,
-				E3C532ED2595285200F42646 /* EsPlusSendDataService.swift */,
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 		E363B8BE258FB77F000609D5 = {
@@ -206,7 +178,6 @@
 				E363B8E0258FB783000609D5 /* SamaraCounterTests */,
 				E363B8EB258FB783000609D5 /* SamaraCounterUITests */,
 				E363B8C8258FB77F000609D5 /* Products */,
-				78E6826A62653EA70927B1A8 /* Pods */,
 				099B48BC7A89A24611CD22E3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -228,7 +199,6 @@
 				C3EE61892A0851DA00BB3260 /* Utils */,
 				E363B900258FBAAB000609D5 /* DB */,
 				C3B94D6327269D5000B5CEAC /* Extensions */,
-				E30F303D25928C49000DD810 /* Network */,
 				C31FA4722630773E00740E5C /* Features */,
 				E363B8CA258FB77F000609D5 /* AppDelegate.swift */,
 				E363B8D0258FB77F000609D5 /* Main.storyboard */,
@@ -264,6 +234,7 @@
 				E363B901258FBAAB000609D5 /* FlatEntity.swift */,
 				E363B902258FBAAB000609D5 /* WaterCounterEntity.swift */,
 				E363B903258FBAAB000609D5 /* DatabaseManager.swift */,
+				C379BD512A54965A00FBA494 /* WaterCounterEntity+WaterCounterViewModel.swift */,
 			);
 			path = DB;
 			sourceTree = "<group>";
@@ -275,17 +246,22 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E363B8F1258FB783000609D5 /* Build configuration list for PBXNativeTarget "SamaraCounter" */;
 			buildPhases = (
-				90E5743AE3F00CDF942BF1F4 /* [CP] Check Pods Manifest.lock */,
 				E363B8C3258FB77F000609D5 /* Sources */,
 				E363B8C4258FB77F000609D5 /* Frameworks */,
 				E363B8C5258FB77F000609D5 /* Resources */,
-				5434AEF64F02758C4CEB34C8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = SamaraCounter;
+			packageProductDependencies = (
+				C379BD442A54940900FBA494 /* CircularSpinner */,
+				C379BD472A54942800FBA494 /* Realm */,
+				C379BD492A54942800FBA494 /* RealmSwift */,
+				C379BD4C2A54943500FBA494 /* Charts */,
+				C379BD4F2A54945B00FBA494 /* iSamaraCounters */,
+			);
 			productName = SamaraCounter;
 			productReference = E363B8C7258FB77F000609D5 /* SamaraCounter.app */;
 			productType = "com.apple.product-type.application";
@@ -358,6 +334,12 @@
 				ru,
 			);
 			mainGroup = E363B8BE258FB77F000609D5;
+			packageReferences = (
+				C379BD432A54940900FBA494 /* XCRemoteSwiftPackageReference "CircularSpinner" */,
+				C379BD462A54942800FBA494 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				C379BD4B2A54943500FBA494 /* XCRemoteSwiftPackageReference "Charts" */,
+				C379BD4E2A54945B00FBA494 /* XCRemoteSwiftPackageReference "iSamaraCounters" */,
+			);
 			productRefGroup = E363B8C8258FB77F000609D5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -396,72 +378,25 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		5434AEF64F02758C4CEB34C8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SamaraCounter/Pods-SamaraCounter-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SamaraCounter/Pods-SamaraCounter-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SamaraCounter/Pods-SamaraCounter-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		90E5743AE3F00CDF942BF1F4 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SamaraCounter-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		E363B8C3258FB77F000609D5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C31FA47D26307C6C00740E5C /* CheckProviderRow.swift in Sources */,
 				C3EE618C2A0851DA00BB3260 /* NavigationRoute.swift in Sources */,
 				C3B94D6527269D9F00B5CEAC /* UIButton.swift in Sources */,
 				C3B94D6227269D1B00B5CEAC /* HistoryTableController.swift in Sources */,
 				E363B904258FBAAB000609D5 /* FlatEntity.swift in Sources */,
-				C31FA4752630777800740E5C /* WaterCounterViewModel.swift in Sources */,
-				E30F304125928C49000DD810 /* RKSSendDataService.swift in Sources */,
 				E363B8CF258FB77F000609D5 /* FlatCountersDetailsController.swift in Sources */,
-				C3EE618D2A0851DA00BB3260 /* NavigationUtils.swift in Sources */,
+				C379BD522A54965A00FBA494 /* WaterCounterEntity+WaterCounterViewModel.swift in Sources */,
 				C3EE61882A084EE500BB3260 /* StatisticsViewController.swift in Sources */,
-				E334ED142593D85800A84F4B /* SamGESSendDataService.swift in Sources */,
 				E363B906258FBAAB000609D5 /* DatabaseManager.swift in Sources */,
+				C379BD542A5496F300FBA494 /* ProgressService.swift in Sources */,
 				E363B8CB258FB77F000609D5 /* AppDelegate.swift in Sources */,
 				C3EE61852A084DCB00BB3260 /* Settings.swift in Sources */,
 				C3B94D672726A38300B5CEAC /* DateFormatter.swift in Sources */,
-				E3C532EE2595285200F42646 /* EsPlusSendDataService.swift in Sources */,
 				C3B94D69272C65F800B5CEAC /* String.swift in Sources */,
 				E363B905258FBAAB000609D5 /* WaterCounterEntity.swift in Sources */,
-				E30F304025928C49000DD810 /* SendDataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,7 +505,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -627,7 +562,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -640,7 +575,6 @@
 		};
 		E363B8F2258FB783000609D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C161DC4DA1F8D915E1A44649 /* Pods-SamaraCounter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -653,6 +587,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.byterix.SamaraCounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -662,7 +597,6 @@
 		};
 		E363B8F3258FB783000609D5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7C204310CE3D7E02ECB875FC /* Pods-SamaraCounter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -675,6 +609,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.byterix.SamaraCounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -806,6 +741,69 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C379BD432A54940900FBA494 /* XCRemoteSwiftPackageReference "CircularSpinner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ByteriX/CircularSpinner.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		C379BD462A54942800FBA494 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		C379BD4B2A54943500FBA494 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/corteggo/Charts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		C379BD4E2A54945B00FBA494 /* XCRemoteSwiftPackageReference "iSamaraCounters" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sofbix/iSamaraCounters.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C379BD442A54940900FBA494 /* CircularSpinner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C379BD432A54940900FBA494 /* XCRemoteSwiftPackageReference "CircularSpinner" */;
+			productName = CircularSpinner;
+		};
+		C379BD472A54942800FBA494 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C379BD462A54942800FBA494 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		C379BD492A54942800FBA494 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C379BD462A54942800FBA494 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		C379BD4C2A54943500FBA494 /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C379BD4B2A54943500FBA494 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
+		C379BD4F2A54945B00FBA494 /* iSamaraCounters */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C379BD4E2A54945B00FBA494 /* XCRemoteSwiftPackageReference "iSamaraCounters" */;
+			productName = iSamaraCounters;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E363B8BF258FB77F000609D5 /* Project object */;
 }

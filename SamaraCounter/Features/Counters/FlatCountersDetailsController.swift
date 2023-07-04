@@ -13,8 +13,9 @@ import CircularSpinner
 import Alamofire
 import Fuzi
 import PromiseKit
+import iSamaraCounters
 
-class FlatCountersDetailsController: BxInputController {
+class FlatCountersDetailsController: BxInputController, SendDataServiceInput {
     
     let waterCounterMaxCount = 3
     
@@ -161,7 +162,7 @@ class FlatCountersDetailsController: BxInputController {
         }
         
         servicesRows.forEach{ row in
-            row.updateValue(flatEntity)
+            row.updateValue(from: flatEntity.serviceProvidersToSending)
         }
         let servicesSection = BxInputSection(headerText: "Куда отправляем", rows: servicesRows, footerText: "Выберите поставщиков комунальных услуг, для которых требуется отправлять показания приборов")
         sections.append(servicesSection)
@@ -341,7 +342,7 @@ class FlatCountersDetailsController: BxInputController {
 
         var services : [Promise<Data>] = []
         servicesRows.forEach{ row in
-            row.update(services: &services, input: self)
+            row.startUpdate(services: &services, input: self, progressService: ProgressService())
         }
         guard services.count > 0 else {
             showAlert(title: "Ошибка", message: "Выберите хотябы одного провайдера в 'Куда отправляем'")
