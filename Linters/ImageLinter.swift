@@ -5,10 +5,10 @@ import AppKit
 
 /**
  ImageLinter.swift
- version 1.4
+ version 1.5
 
  Created by Sergey Balalaev on 23.09.22.
- Copyright (c) 2022 ByteriX. All rights reserved.
+ Copyright (c) 2022-2023 ByteriX. All rights reserved.
 
  Script allows:
  1. Checking size (file and image) of vector(PDF) and rastor(PNG/JPEG) files
@@ -28,10 +28,10 @@ import AppKit
 let isEnabled = true
 
 /// Path to folder with images files. For example "/YouProject/Resources/Images"
-let relativeImagesPath = "SamaraCounter"
+let relativeImagesPath = "/SamaraCounter"
 
 /// Path of the source folder which will used in searching for localization keys you actually use in your project. For Example "/YouProject/Source"
-let relativeSourcePath = "SamaraCounter"
+let relativeSourcePath = "/SamaraCounter"
 
 /// Using localizations type from code. If you use custom you need define regex pattern
 enum UsingType {
@@ -43,7 +43,7 @@ enum UsingType {
 
 /// yuo can use many types
 let usingTypes: [UsingType] = [
-    .swiftGen(), .swiftUI, .uiKit
+    .uiKit
 ]
 
 /**
@@ -64,6 +64,12 @@ let vectorExtensions = ["pdf", "svg"]
 let rastorSetExtensions = Set<String>(rastorExtensions.map{$0.uppercased()})
 let vectorSetExtensions = Set<String>(vectorExtensions.map{$0.uppercased()})
 let imageSetExtensions = rastorSetExtensions.union(vectorSetExtensions)
+
+let sourcesExtensions = ["swift", "mm", "m"]
+let resourcesExtensions = ["storyboard", "xib"]
+let sourcesSetExtensions = Set<String>(sourcesExtensions.map{$0.uppercased()})
+let resourcesSetExtensions = Set<String>(resourcesExtensions.map{$0.uppercased()})
+
 
 // Maximum size of Vector files
 let maxVectorFileSize: UInt64 = 20_000
@@ -627,27 +633,44 @@ while let imageFileName = imageFileEnumerator?.nextObject() as? String {
 
 let sourcePath = FileManager.default.currentDirectoryPath + relativeSourcePath
 var usedImages: [String] = []
-for regexPattern in searchUsingRegexPatterns {
+let sourcesRegex = searchUsingRegexPatterns.compactMap { regexPattern in
     let regex = try? NSRegularExpression(pattern: regexPattern, options: [])
     if regex == nil {
         printError(filePath: #file, message: "Not right pattern for regex: \(regexPattern)", line: #line)
     }
+    return regex
+}
+let resourcesRegex = try! NSRegularExpression(pattern: #"<\bimage name="(.[A-z0-9]*)""#, options: [])
+// Search all using
+//{
     let swiftFileEnumerator = FileManager.default.enumerator(atPath: sourcePath)
     while let sourceFileName = swiftFileEnumerator?.nextObject() as? String {
-        // checks the extension
-        if sourceFileName.hasSuffix(".swift") || sourceFileName.hasSuffix(".m") || sourceFileName.hasSuffix(".mm") {
-            let sourceFilePath = "\(sourcePath)/\(sourceFileName)"
-            if let string = try? String(contentsOfFile: sourceFilePath, encoding: .utf8) {
+        let fileExtension = (sourceFileName as NSString).pathExtension.uppercased()
+        let filePath = "\(sourcePath)/\(sourceFileName)"
+        // checks the extension to source
+        if sourcesSetExtensions.contains(fileExtension) {
+            if let string = try? String(contentsOfFile: filePath, encoding: .utf8) {
                 let range = NSRange(location: 0, length: (string as NSString).length)
-                regex?.enumerateMatches(in: string,
+                sourcesRegex.forEach{ regex in
+                    regex.enumerateMatches(in: string,
+                                            options: [],
+                                            range: range) { result, _, _ in
+                        addUsedImage(from: string, result: result, path: filePath)
+                    }
+                }
+            }
+        } else if resourcesSetExtensions.contains(fileExtension) { // checks the extension to resource
+            if let string = try? String(contentsOfFile: filePath, encoding: .utf8) {
+                let range = NSRange(location: 0, length: (string as NSString).length)
+                resourcesRegex.enumerateMatches(in: string,
                                         options: [],
                                         range: range) { result, _, _ in
-                    addUsedImage(from: string, result: result, path: sourceFilePath)
+                    addUsedImage(from: string, result: result, path: filePath)
                 }
             }
         }
     }
-}
+//}
 
 func addUsedImage(from string: String, result: NSTextCheckingResult?, path: String) {
     guard let result = result, result.numberOfRanges > 0 else {
