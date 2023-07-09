@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -55,6 +55,7 @@
 		C31FA46D2630681100740E5C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		C379BD512A54965A00FBA494 /* WaterCounterEntity+WaterCounterViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WaterCounterEntity+WaterCounterViewModel.swift"; sourceTree = "<group>"; };
 		C379BD532A5496F300FBA494 /* ProgressService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressService.swift; sourceTree = "<group>"; };
+		C3A7974F2A5B23B600DF14BB /* ImageLinter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLinter.swift; sourceTree = "<group>"; };
 		C3B94D6127269D1B00B5CEAC /* HistoryTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableController.swift; sourceTree = "<group>"; };
 		C3B94D6427269D9F00B5CEAC /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		C3B94D662726A38200B5CEAC /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
@@ -136,6 +137,14 @@
 			path = Counters;
 			sourceTree = "<group>";
 		};
+		C3A7974E2A5B23B600DF14BB /* Linters */ = {
+			isa = PBXGroup;
+			children = (
+				C3A7974F2A5B23B600DF14BB /* ImageLinter.swift */,
+			);
+			path = Linters;
+			sourceTree = "<group>";
+		};
 		C3B94D6027269CE500B5CEAC /* History */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +183,7 @@
 		E363B8BE258FB77F000609D5 = {
 			isa = PBXGroup;
 			children = (
+				C3A7974E2A5B23B600DF14BB /* Linters */,
 				E363B8C9258FB77F000609D5 /* SamaraCounter */,
 				E363B8E0258FB783000609D5 /* SamaraCounterTests */,
 				E363B8EB258FB783000609D5 /* SamaraCounterUITests */,
@@ -246,6 +256,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E363B8F1258FB783000609D5 /* Build configuration list for PBXNativeTarget "SamaraCounter" */;
 			buildPhases = (
+				C3A797512A5B23F400DF14BB /* Linters */,
 				E363B8C3258FB77F000609D5 /* Sources */,
 				E363B8C4258FB77F000609D5 /* Frameworks */,
 				E363B8C5258FB77F000609D5 /* Resources */,
@@ -308,8 +319,9 @@
 		E363B8BF258FB77F000609D5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1210;
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					E363B8C6258FB77F000609D5 = {
 						CreatedOnToolsVersion = 12.1;
@@ -377,6 +389,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C3A797512A5B23F400DF14BB /* Linters */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Linters;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = " ${SRCROOT}/Linters/ImageLinter.swift\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E363B8C3258FB77F000609D5 /* Sources */ = {
