@@ -205,16 +205,16 @@
 		E363B8C9258FB77F000609D5 /* SamaraCounter */ = {
 			isa = PBXGroup;
 			children = (
+				E363B8D8258FB782000609D5 /* Info.plist */,
+				E363B8D3258FB782000609D5 /* Assets.xcassets */,
+				E363B8D0258FB77F000609D5 /* Main.storyboard */,
+				E363B8D5258FB782000609D5 /* LaunchScreen.storyboard */,
 				C3EE618E2A08594800BB3260 /* SamaraCounter.entitlements */,
 				C3EE61892A0851DA00BB3260 /* Utils */,
 				E363B900258FBAAB000609D5 /* DB */,
 				C3B94D6327269D5000B5CEAC /* Extensions */,
 				C31FA4722630773E00740E5C /* Features */,
 				E363B8CA258FB77F000609D5 /* AppDelegate.swift */,
-				E363B8D0258FB77F000609D5 /* Main.storyboard */,
-				E363B8D3258FB782000609D5 /* Assets.xcassets */,
-				E363B8D5258FB782000609D5 /* LaunchScreen.storyboard */,
-				E363B8D8258FB782000609D5 /* Info.plist */,
 				C3EE61842A084DCB00BB3260 /* Settings.swift */,
 			);
 			path = SamaraCounter;
@@ -408,7 +408,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = " ${SRCROOT}/Linters/ImageLinter.swift\n";
+			shellScript = "Linters/ImageLinter.swift -imagesPath \"/SamaraCounter\" -sourcePath \"/SamaraCounter\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

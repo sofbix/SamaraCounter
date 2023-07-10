@@ -5,7 +5,7 @@ import AppKit
 
 /**
  ImageLinter.swift
- version 1.5
+ version 1.6
 
  Created by Sergey Balalaev on 23.09.22.
  Copyright (c) 2022-2023 ByteriX. All rights reserved.
@@ -28,10 +28,10 @@ import AppKit
 let isEnabled = true
 
 /// Path to folder with images files. For example "/YouProject/Resources/Images"
-let relativeImagesPath = "/SamaraCounter"
+let relativeImagesPath = UserDefaults.standard.string(forKey: "imagesPath")!
 
 /// Path of the source folder which will used in searching for localization keys you actually use in your project. For Example "/YouProject/Source"
-let relativeSourcePath = "/SamaraCounter"
+let relativeSourcePath = UserDefaults.standard.string(forKey: "sourcePath")!
 
 /// Using localizations type from code. If you use custom you need define regex pattern
 enum UsingType {
@@ -196,6 +196,7 @@ extension CGImage {
 }
 
 let imagesPath = FileManager.default.currentDirectoryPath + relativeImagesPath
+print("image folder: \(imagesPath)")
 
 func fileSize(fromPath path: String) -> UInt64 {
     let size: Any? = try? FileManager.default.attributesOfItem(atPath: path)[FileAttributeKey.size]
@@ -451,9 +452,10 @@ class ImageInfo {
                     if let scale = file.scale {
                         setAndCheckType(newType: .rastor, filePath: imageFilePath)
                         if Int(pixelSize.width) % scale != 0 || Int(pixelSize.height) % scale != 0 {
+                            let newScaledSize: (width: Double, height: Double) = (Double(pixelSize.width) / Double(scale), Double(pixelSize.height) / Double(scale))
                             printError(
                                 filePath: imageFilePath,
-                                message: "Image has floating size from scaled images. Real size is \(pixelSize) and scale = \(scale). Found for image '\(name)'"
+                                message: "Image has floating size from scaled images. Real size is \(pixelSize) and scale = \(scale). Please check the file, it must have integer size after apply this scale. But you actually have \(newScaledSize). Found for image '\(name)'."
                             )
                         } else {
                             let newScaledSize: (width: Int, height: Int) = (Int(pixelSize.width) / scale, Int(pixelSize.height) / scale)
@@ -632,6 +634,7 @@ while let imageFileName = imageFileEnumerator?.nextObject() as? String {
 // MARK: - detect unused Images
 
 let sourcePath = FileManager.default.currentDirectoryPath + relativeSourcePath
+print("source folder: \(sourcePath)")
 var usedImages: [String] = []
 let sourcesRegex = searchUsingRegexPatterns.compactMap { regexPattern in
     let regex = try? NSRegularExpression(pattern: regexPattern, options: [])
@@ -642,35 +645,33 @@ let sourcesRegex = searchUsingRegexPatterns.compactMap { regexPattern in
 }
 let resourcesRegex = try! NSRegularExpression(pattern: #"<\bimage name="(.[A-z0-9]*)""#, options: [])
 // Search all using
-//{
-    let swiftFileEnumerator = FileManager.default.enumerator(atPath: sourcePath)
-    while let sourceFileName = swiftFileEnumerator?.nextObject() as? String {
-        let fileExtension = (sourceFileName as NSString).pathExtension.uppercased()
-        let filePath = "\(sourcePath)/\(sourceFileName)"
-        // checks the extension to source
-        if sourcesSetExtensions.contains(fileExtension) {
-            if let string = try? String(contentsOfFile: filePath, encoding: .utf8) {
-                let range = NSRange(location: 0, length: (string as NSString).length)
-                sourcesRegex.forEach{ regex in
-                    regex.enumerateMatches(in: string,
-                                            options: [],
-                                            range: range) { result, _, _ in
-                        addUsedImage(from: string, result: result, path: filePath)
-                    }
-                }
-            }
-        } else if resourcesSetExtensions.contains(fileExtension) { // checks the extension to resource
-            if let string = try? String(contentsOfFile: filePath, encoding: .utf8) {
-                let range = NSRange(location: 0, length: (string as NSString).length)
-                resourcesRegex.enumerateMatches(in: string,
+let sourceFileEnumerator = FileManager.default.enumerator(atPath: sourcePath)
+while let sourceFileName = sourceFileEnumerator?.nextObject() as? String {
+    let fileExtension = (sourceFileName as NSString).pathExtension.uppercased()
+    let filePath = "\(sourcePath)/\(sourceFileName)"
+    // checks the extension to source
+    if sourcesSetExtensions.contains(fileExtension) {
+        if let string = try? String(contentsOfFile: filePath, encoding: .utf8) {
+            let range = NSRange(location: 0, length: (string as NSString).length)
+            sourcesRegex.forEach{ regex in
+                regex.enumerateMatches(in: string,
                                         options: [],
                                         range: range) { result, _, _ in
                     addUsedImage(from: string, result: result, path: filePath)
                 }
             }
         }
+    } else if resourcesSetExtensions.contains(fileExtension) { // checks the extension to resource
+        if let string = try? String(contentsOfFile: filePath, encoding: .utf8) {
+            let range = NSRange(location: 0, length: (string as NSString).length)
+            resourcesRegex.enumerateMatches(in: string,
+                                    options: [],
+                                    range: range) { result, _, _ in
+                addUsedImage(from: string, result: result, path: filePath)
+            }
+        }
     }
-//}
+}
 
 func addUsedImage(from string: String, result: NSTextCheckingResult?, path: String) {
     guard let result = result, result.numberOfRanges > 0 else {
