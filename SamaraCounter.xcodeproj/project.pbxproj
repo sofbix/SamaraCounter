@@ -408,7 +408,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "swiftc Linters/ImageLinter.swift\n./ImageLinter -imagesPath \"/SamaraCounter\" -sourcePath \"/SamaraCounter\"\n";
+			shellScript = "swiftc Linters/ImageLinter.swift\nImageLinter -imagesPath \"/SamaraCounter\" -sourcePath \"/SamaraCounter\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
