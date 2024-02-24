@@ -339,7 +339,6 @@ class FlatCountersDetailsController: BxInputController, SendDataServiceInput {
     }
     
     func startServices() {
-
         var services : [Promise<Data>] = []
         servicesRows.forEach{ row in
             row.startUpdate(services: &services, input: self, progressService: ProgressService())
@@ -357,8 +356,8 @@ class FlatCountersDetailsController: BxInputController, SendDataServiceInput {
             }
         }.catch {[weak self] error in
             CircularSpinner.hide()
-            //self?.showAlert(title: "Ошибка", message: error.localizedDescription)
             self?.checkAllRows()
+            self?.showAlert(title: "Ошибка", message: error.localizedDescription)
         }
     }
     
