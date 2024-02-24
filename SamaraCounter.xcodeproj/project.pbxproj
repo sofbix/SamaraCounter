@@ -408,7 +408,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "Linters/ImageLinter.swift -imagesPath \"/SamaraCounter\" -sourcePath \"/SamaraCounter\"\n";
+			shellScript = "swiftc Linters/ImageLinter.swift\n./ImageLinter -imagesPath \"/SamaraCounter\" -sourcePath \"/SamaraCounter\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -617,6 +617,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FDK83T8QNS;
 				INFOPLIST_FILE = SamaraCounter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -639,6 +640,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FDK83T8QNS;
 				INFOPLIST_FILE = SamaraCounter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

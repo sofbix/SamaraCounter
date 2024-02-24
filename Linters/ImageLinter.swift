@@ -43,7 +43,7 @@ enum UsingType {
 
 /// yuo can use many types
 let usingTypes: [UsingType] = [
-    .swiftGen(), .swiftUI, .uiKit
+    .uiKit
 ]
 
 /**
