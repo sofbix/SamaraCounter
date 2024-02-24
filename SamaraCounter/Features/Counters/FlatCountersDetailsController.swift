@@ -58,7 +58,8 @@ class FlatCountersDetailsController: BxInputController, SendDataServiceInput {
     private lazy var servicesRows : [CheckProviderProtocol] = [
         CheckProviderRow(RKSSendDataService()),
         CheckProviderRow(EsPlusSendDataService()),
-        CheckProviderRow(SamGESSendDataService())
+        CheckProviderRow(SamGESSendDataService()),
+        CheckProviderRow(SamaraEnergoSendDataService())
     ]
     
     private lazy var sendFooter: UIView = UIButton.createOnView(title: "Отправить показания", target: self, action: #selector(start))
