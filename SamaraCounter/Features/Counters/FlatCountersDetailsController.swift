@@ -357,7 +357,8 @@ class FlatCountersDetailsController: BxInputController, SendDataServiceInput {
             }
         }.catch {[weak self] error in
             CircularSpinner.hide()
-            self?.showAlert(title: "Ошибка", message: error.localizedDescription)
+            //self?.showAlert(title: "Ошибка", message: error.localizedDescription)
+            self?.checkAllRows()
         }
     }
     
