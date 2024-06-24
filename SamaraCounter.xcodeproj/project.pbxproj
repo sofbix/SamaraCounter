@@ -3,15 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C373AAA62C29A2E100515C8E /* iSamaraCounters in Frameworks */ = {isa = PBXBuildFile; productRef = C373AAA52C29A2E100515C8E /* iSamaraCounters */; };
+		C373AAA82C29A2E100515C8E /* iSamaraCountersModels in Frameworks */ = {isa = PBXBuildFile; productRef = C373AAA72C29A2E100515C8E /* iSamaraCountersModels */; };
 		C379BD452A54940900FBA494 /* CircularSpinner in Frameworks */ = {isa = PBXBuildFile; productRef = C379BD442A54940900FBA494 /* CircularSpinner */; };
-		C379BD482A54942800FBA494 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C379BD472A54942800FBA494 /* Realm */; };
 		C379BD4A2A54942800FBA494 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C379BD492A54942800FBA494 /* RealmSwift */; };
 		C379BD4D2A54943500FBA494 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = C379BD4C2A54943500FBA494 /* Charts */; };
-		C379BD502A54945B00FBA494 /* iSamaraCounters in Frameworks */ = {isa = PBXBuildFile; productRef = C379BD4F2A54945B00FBA494 /* iSamaraCounters */; };
 		C379BD522A54965A00FBA494 /* WaterCounterEntity+WaterCounterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C379BD512A54965A00FBA494 /* WaterCounterEntity+WaterCounterViewModel.swift */; };
 		C379BD542A5496F300FBA494 /* ProgressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C379BD532A5496F300FBA494 /* ProgressService.swift */; };
 		C3B94D6227269D1B00B5CEAC /* HistoryTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B94D6127269D1B00B5CEAC /* HistoryTableController.swift */; };
@@ -87,10 +87,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C379BD502A54945B00FBA494 /* iSamaraCounters in Frameworks */,
+				C373AAA62C29A2E100515C8E /* iSamaraCounters in Frameworks */,
 				C379BD4D2A54943500FBA494 /* Charts in Frameworks */,
 				C379BD4A2A54942800FBA494 /* RealmSwift in Frameworks */,
-				C379BD482A54942800FBA494 /* Realm in Frameworks */,
+				C373AAA82C29A2E100515C8E /* iSamaraCountersModels in Frameworks */,
 				C379BD452A54940900FBA494 /* CircularSpinner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,10 +268,10 @@
 			name = SamaraCounter;
 			packageProductDependencies = (
 				C379BD442A54940900FBA494 /* CircularSpinner */,
-				C379BD472A54942800FBA494 /* Realm */,
 				C379BD492A54942800FBA494 /* RealmSwift */,
 				C379BD4C2A54943500FBA494 /* Charts */,
-				C379BD4F2A54945B00FBA494 /* iSamaraCounters */,
+				C373AAA52C29A2E100515C8E /* iSamaraCounters */,
+				C373AAA72C29A2E100515C8E /* iSamaraCountersModels */,
 			);
 			productName = SamaraCounter;
 			productReference = E363B8C7258FB77F000609D5 /* SamaraCounter.app */;
@@ -321,7 +321,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1210;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					E363B8C6258FB77F000609D5 = {
 						CreatedOnToolsVersion = 12.1;
@@ -350,7 +350,7 @@
 				C379BD432A54940900FBA494 /* XCRemoteSwiftPackageReference "CircularSpinner" */,
 				C379BD462A54942800FBA494 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				C379BD4B2A54943500FBA494 /* XCRemoteSwiftPackageReference "Charts" */,
-				C379BD4E2A54945B00FBA494 /* XCRemoteSwiftPackageReference "iSamaraCounters" */,
+				C373AAA42C29A2E100515C8E /* XCLocalSwiftPackageReference "." */,
 			);
 			productRefGroup = E363B8C8258FB77F000609D5 /* Products */;
 			projectDirPath = "";
@@ -525,6 +525,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -588,6 +589,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -778,6 +780,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		C373AAA42C29A2E100515C8E /* XCLocalSwiftPackageReference "." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = .;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		C379BD432A54940900FBA494 /* XCRemoteSwiftPackageReference "CircularSpinner" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -791,8 +800,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = revision;
+				revision = 5ed2c8ece79e63056641bd517435aaf81563f887;
 			};
 		};
 		C379BD4B2A54943500FBA494 /* XCRemoteSwiftPackageReference "Charts" */ = {
@@ -803,26 +812,21 @@
 				minimumVersion = 3.0.0;
 			};
 		};
-		C379BD4E2A54945B00FBA494 /* XCRemoteSwiftPackageReference "iSamaraCounters" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sofbix/iSamaraCounters.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C373AAA52C29A2E100515C8E /* iSamaraCounters */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = iSamaraCounters;
+		};
+		C373AAA72C29A2E100515C8E /* iSamaraCountersModels */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = iSamaraCountersModels;
+		};
 		C379BD442A54940900FBA494 /* CircularSpinner */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C379BD432A54940900FBA494 /* XCRemoteSwiftPackageReference "CircularSpinner" */;
 			productName = CircularSpinner;
-		};
-		C379BD472A54942800FBA494 /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C379BD462A54942800FBA494 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
 		};
 		C379BD492A54942800FBA494 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -833,11 +837,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C379BD4B2A54943500FBA494 /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
-		};
-		C379BD4F2A54945B00FBA494 /* iSamaraCounters */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C379BD4E2A54945B00FBA494 /* XCRemoteSwiftPackageReference "iSamaraCounters" */;
-			productName = iSamaraCounters;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

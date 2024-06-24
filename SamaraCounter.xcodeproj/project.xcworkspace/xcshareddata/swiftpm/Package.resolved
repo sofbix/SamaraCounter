@@ -1,12 +1,13 @@
 {
+  "originHash" : "c07d0b174dff95d0d4917986d705e3c039e34d7c3b87461fff059fb1b3a280a3",
   "pins" : [
     {
       "identity" : "alamofire",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Alamofire/Alamofire.git",
       "state" : {
-        "revision" : "bc268c28fb170f494de9e9927c371b8342979ece",
-        "version" : "5.7.1"
+        "revision" : "f455c2975872ccd2d9c81594c658af65716e9b9a",
+        "version" : "5.9.1"
       }
     },
     {
@@ -15,7 +16,7 @@
       "location" : "https://github.com/ByteriX/BxInputController.git",
       "state" : {
         "branch" : "master",
-        "revision" : "7e49885efb3744332d655a6ca2f92ecc598bc4d9"
+        "revision" : "64d9677a044e6d7a21035bd974a7310bbd0c2758"
       }
     },
     {
@@ -64,15 +65,6 @@
       }
     },
     {
-      "identity" : "isamaracounters",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/sofbix/iSamaraCounters.git",
-      "state" : {
-        "branch" : "main",
-        "revision" : "cb0f23af48fb5b45b5451655466a6baf0d0064e4"
-      }
-    },
-    {
       "identity" : "promisekit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mxcl/PromiseKit.git",
@@ -95,10 +87,9 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/realm/realm-swift.git",
       "state" : {
-        "branch" : "master",
         "revision" : "5ed2c8ece79e63056641bd517435aaf81563f887"
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
