@@ -332,33 +332,80 @@ class FlatCountersDetailsController: BxInputController, SendDataServiceInput {
     
     @objc
     func start() {
+        // Неплохо бы научиться отключать эту проверку для чекбоксов
         guard checkAllRows() else {
             showAlert(title: "Ошибка", message: "Проверьте данные...")
             return
         }
         startServices()
     }
-    
+
+    var progressController: ProgressViewController?
+
     func startServices() {
+
+        var items: [ProgressItemView] = []
         var services : [Promise<Data>] = []
-        servicesRows.forEach{ row in
-            row.startUpdate(services: &services, input: self, progressService: ProgressService())
+
+        servicesRows.forEach { row in
+            if row.value {
+                let item = ProgressItemView(title: row.serviceName)
+                items.append(item)
+
+                let promise = row.startUpdate(input: self)
+                services.append(promise)
+                promise.done{ _ in
+                    item.status = .done
+                }.catch{ error in
+                    item.status = .error(message: error.localizedDescription)
+                }
+            }
         }
+
         guard services.count > 0 else {
             showAlert(title: "Ошибка", message: "Выберите хотябы одного провайдера в 'Куда отправляем'")
             return
         }
-        when(fulfilled: services)
-        .done {[weak self] datas in
+
+        progressController = ProgressViewController(items: items)
+        progressController?.modalPresentationStyle = .overFullScreen
+        if let progressController {
+            self.navigationController?.present(progressController, animated: true)
+        }
+        progressController?.okHandle = {[weak self, weak progressController] in
             self?.branchAllFlatData()
-            CircularSpinner.hide()
-            self?.showAlert(title: "Bingo!", message: "Ваши показания успешно отправлены"){
-                self?.navigationController?.popViewController(animated: true)
-            }
-        }.catch {[weak self] error in
-            CircularSpinner.hide()
+            progressController?.dismiss(animated: true)
+            self?.navigationController?.popViewController(animated: true)
+        }
+        progressController?.cancelHandle = {[weak self, weak progressController] in
+            progressController?.dismiss(animated: true)
             self?.checkAllRows()
-            self?.showAlert(title: "Ошибка", message: error.localizedDescription)
+        }
+
+        when(resolved: services)
+        .done {[weak progressController] results in
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5 ){[weak progressController] in
+                guard let progressController else {
+                    return
+                }
+                var fulfilledCount = 0
+                results.forEach { result in
+                    if result.isFulfilled {
+                        fulfilledCount += 1
+                    }
+                }
+                if fulfilledCount == results.count {
+                    progressController.status = .allDone
+                } else if fulfilledCount > 0 {
+                    progressController.status = .partlyDone
+                } else {
+                    progressController.status = .allError
+                }
+            }
+
+        }.catch {[weak progressController] error in
+            progressController?.status = .allError
         }
     }
     

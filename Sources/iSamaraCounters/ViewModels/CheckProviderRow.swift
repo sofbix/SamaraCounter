@@ -24,7 +24,7 @@ public protocol CheckProviderProtocol : BxInputRow {
     func updateValue(from serviceProvidersToSending: String)
     
     func addCheckers(for input: SendDataServiceInput)
-    func startUpdate(services: inout [Promise<Data>], input: SendDataServiceInput, progressService: ProgressServiceProtocol)
+    func startUpdate(input: SendDataServiceInput) -> Promise<Data>
 
     var isNeedFirstLoad: Bool {get}
     func firstLoadUpdate(services: inout [Promise<Data>], input: SendDataServiceInput, progressService: ProgressServiceProtocol)
@@ -90,11 +90,8 @@ extension CheckProviderRow: CheckProviderProtocol
         service.addCheckers(for: input)
     }
 
-    public func startUpdate(services: inout [Promise<Data>], input: SendDataServiceInput, progressService: ProgressServiceProtocol) {
-        if value {
-            services.append(progressService.start(with: "Передача в " + service.title))
-            services.append(service.start(with: input))
-        }
+    public func startUpdate(input: SendDataServiceInput) -> Promise<Data> {
+        service.start(with: input)
     }
 
     public func firstLoadUpdate(services: inout [Promise<Data>], input: SendDataServiceInput, progressService: ProgressServiceProtocol) {
