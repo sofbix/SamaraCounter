@@ -14,9 +14,9 @@
 		C373AAAE2C2A8A3A00515C8E /* ProgressItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C373AAAD2C2A8A3A00515C8E /* ProgressItemView.swift */; };
 		C379BD452A54940900FBA494 /* CircularSpinner in Frameworks */ = {isa = PBXBuildFile; productRef = C379BD442A54940900FBA494 /* CircularSpinner */; };
 		C379BD4A2A54942800FBA494 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C379BD492A54942800FBA494 /* RealmSwift */; };
-		C379BD4D2A54943500FBA494 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = C379BD4C2A54943500FBA494 /* Charts */; };
 		C379BD522A54965A00FBA494 /* WaterCounterEntity+WaterCounterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C379BD512A54965A00FBA494 /* WaterCounterEntity+WaterCounterViewModel.swift */; };
 		C379BD542A5496F300FBA494 /* ProgressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C379BD532A5496F300FBA494 /* ProgressService.swift */; };
+		C3859E3D2E2A830E00306AFC /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = C3859E3C2E2A830E00306AFC /* DGCharts */; };
 		C3B94D6227269D1B00B5CEAC /* HistoryTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B94D6127269D1B00B5CEAC /* HistoryTableController.swift */; };
 		C3B94D6527269D9F00B5CEAC /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B94D6427269D9F00B5CEAC /* UIButton.swift */; };
 		C3B94D672726A38300B5CEAC /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B94D662726A38200B5CEAC /* DateFormatter.swift */; };
@@ -94,8 +94,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C373AAA62C29A2E100515C8E /* iSamaraCounters in Frameworks */,
-				C379BD4D2A54943500FBA494 /* Charts in Frameworks */,
 				C379BD4A2A54942800FBA494 /* RealmSwift in Frameworks */,
+				C3859E3D2E2A830E00306AFC /* DGCharts in Frameworks */,
 				C373AAA82C29A2E100515C8E /* iSamaraCountersModels in Frameworks */,
 				C379BD452A54940900FBA494 /* CircularSpinner in Frameworks */,
 			);
@@ -278,9 +278,9 @@
 			packageProductDependencies = (
 				C379BD442A54940900FBA494 /* CircularSpinner */,
 				C379BD492A54942800FBA494 /* RealmSwift */,
-				C379BD4C2A54943500FBA494 /* Charts */,
 				C373AAA52C29A2E100515C8E /* iSamaraCounters */,
 				C373AAA72C29A2E100515C8E /* iSamaraCountersModels */,
+				C3859E3C2E2A830E00306AFC /* DGCharts */,
 			);
 			productName = SamaraCounter;
 			productReference = E363B8C7258FB77F000609D5 /* SamaraCounter.app */;
@@ -358,8 +358,8 @@
 			packageReferences = (
 				C379BD432A54940900FBA494 /* XCRemoteSwiftPackageReference "CircularSpinner" */,
 				C379BD462A54942800FBA494 /* XCRemoteSwiftPackageReference "realm-swift" */,
-				C379BD4B2A54943500FBA494 /* XCRemoteSwiftPackageReference "Charts" */,
 				C373AAA42C29A2E100515C8E /* XCLocalSwiftPackageReference "." */,
+				C3859E3B2E2A830E00306AFC /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = E363B8C8258FB77F000609D5 /* Products */;
 			projectDirPath = "";
@@ -627,9 +627,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SamaraCounter/SamaraCounter.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FDK83T8QNS;
+				DEVELOPMENT_TEAM = NVEUY947QB;
 				INFOPLIST_FILE = SamaraCounter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -640,6 +641,7 @@
 				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.byterix.SamaraCounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -650,9 +652,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SamaraCounter/SamaraCounter.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FDK83T8QNS;
+				DEVELOPMENT_TEAM = NVEUY947QB;
 				INFOPLIST_FILE = SamaraCounter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -663,6 +666,7 @@
 				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.byterix.SamaraCounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -816,12 +820,12 @@
 				revision = 5ed2c8ece79e63056641bd517435aaf81563f887;
 			};
 		};
-		C379BD4B2A54943500FBA494 /* XCRemoteSwiftPackageReference "Charts" */ = {
+		C3859E3B2E2A830E00306AFC /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/corteggo/Charts";
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
+				minimumVersion = 5.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -845,10 +849,10 @@
 			package = C379BD462A54942800FBA494 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
-		C379BD4C2A54943500FBA494 /* Charts */ = {
+		C3859E3C2E2A830E00306AFC /* DGCharts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C379BD4B2A54943500FBA494 /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = Charts;
+			package = C3859E3B2E2A830E00306AFC /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

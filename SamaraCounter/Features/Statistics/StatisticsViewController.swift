@@ -8,7 +8,7 @@
 
 import UIKit
 import BxInputController
-import Charts
+import DGCharts
 
 class StatisticsViewController: BxInputController, ChartViewDelegate {
 
@@ -35,7 +35,7 @@ class StatisticsViewController: BxInputController, ChartViewDelegate {
 
     func updateChart(_ chartView: CombinedChartView) {
         chartView.delegate = self
-        chartView.chartDescription?.enabled = false
+        chartView.chartDescription.enabled = false
         chartView.dragEnabled = true
         chartView.setScaleEnabled(true)
         chartView.pinchZoomEnabled = true
@@ -283,8 +283,8 @@ class StatisticsViewController: BxInputController, ChartViewDelegate {
 
 }
 
-extension StatisticsViewController: IAxisValueFormatter {
-    func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+extension StatisticsViewController: AxisValueFormatter {
+    @objc func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         if axis is XAxis {
             return Settings.shortDateFormatter.string(from: Date(timeIntervalSinceReferenceDate: value))
         } else {
