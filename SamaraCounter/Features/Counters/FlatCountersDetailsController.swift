@@ -44,7 +44,7 @@ class FlatCountersDetailsController: BxInputController, SendDataServiceInput {
     let flatNumberRow = BxInputTextRow(title: "Номер квартиры", maxCount: 5, value: "")
     let phoneNumberRow = BxInputFormattedTextRow(title: "Телефон", prefix: "+7", format: "(###)###-##-##")
     let emailRow = BxInputTextRow(title: "E-mail", maxCount: 50, value: "")
-    let rksAccountNumberRow = BxInputTextRow(title: "Номер счета РКС", subtitle: "если необходим", maxCount: 15, value: "")
+    let rksAccountNumberRow = BxInputTextRow(title: "Номер счета РКС", subtitle: "если необходим", maxCount: 10, value: "")
     let esPlusAccountNumberRow = BxInputTextRow(title: "Лицевой счёт Т+", subtitle: "если необходим", maxCount: 20, value: "")
     let commentsRow = BxInputTextMemoRow(title: "Коментарии", maxCount: 1000, value: "")
 
@@ -369,9 +369,6 @@ class FlatCountersDetailsController: BxInputController, SendDataServiceInput {
 
         progressController = ProgressViewController(items: items)
         progressController?.modalPresentationStyle = .overFullScreen
-        if let progressController {
-            self.navigationController?.present(progressController, animated: true)
-        }
         progressController?.okHandle = {[weak self, weak progressController] in
             self?.branchAllFlatData()
             progressController?.dismiss(animated: true)
@@ -380,6 +377,9 @@ class FlatCountersDetailsController: BxInputController, SendDataServiceInput {
         progressController?.cancelHandle = {[weak self, weak progressController] in
             progressController?.dismiss(animated: true)
             self?.checkAllRows()
+        }
+        if let progressController {
+            self.navigationController?.present(progressController, animated: true)
         }
 
         when(resolved: services)
